@@ -1,0 +1,30 @@
+{
+  "name": "stegno",
+  "version": "1.0.0",
+  "main": "test.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "array-buffer-to-hex": "^1.0.0",
+    "buffer": "^5.6.0",
+    "bz2": "^1.0.1",
+    "center-align": "^1.0.1",
+    "cfonts": "^2.8.1",
+    "clipboardy": "^2.3.0",
+    "colors": "^1.4.0",
+    "commander": "^5.1.0",
+    "crypto-browserify": "^3.12.0",
+    "lzma": "^2.3.2",
+    "lzutf8": "^0.5.5",
+    "lzwcompress": "^0.5.16",
+    "node-gzip": "^1.1.2",
+    "pako": "^1.0.11",
+    "ramda": "^0.27.0",
+    "safe-buffer": "^5.2.0",
+    "timing-safe-equal": "^1.0.0"
+  }
+}
