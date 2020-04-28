@@ -10,4 +10,4 @@
 
 <h4 align="center">The Cloak of Invisibility for your texts</h4>
 
-Invisible JS is a Pure javascript stegnography module designed in functional programming style to hide text in plain sight with key features like encryption and top notch text compression . It can be used in social media or for any other covert communications.
+StegCloak is a Pure javascript stegnography module designed in functional programming style to hide text in plain sight with key features like encryption and top notch text compression . It can be used in social media or for any other covert communications.
