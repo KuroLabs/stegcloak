@@ -1,8 +1,4 @@
     
-Pure functional program port - 70% done
-
-  - Ramda 
-
 
   React client
   

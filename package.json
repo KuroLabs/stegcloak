@@ -9,6 +9,7 @@
   "license": "ISC",
   "description": "",
   "dependencies": {
+    "@babel/core": "^7.9.6",
     "clipboardy": "^2.3.0",
     "colors": "^1.4.0",
     "commander": "^5.1.0",
@@ -17,5 +18,12 @@
     "ramda": "^0.27.0",
     "safe-buffer": "^5.2.0",
     "timing-safe-equal": "^1.0.0"
+  },
+  "devDependencies": {
+    "babel-preset-es2015": "^6.24.1",
+    "babelify": "^10.0.0",
+    "browserify": "^16.5.1",
+    "minifyify": "^7.3.5",
+    "standard": "^14.3.3"
   }
 }

@@ -1,37 +1,35 @@
-const R=require('ramda');
+const R = require('ramda')
 
-const {encrypt,decrypt}=require("./components/encrypt");
+const { encrypt, decrypt } = require('./components/encrypt')
 
-const {embed,detach,toConceal,toConcealHmac,concealToData}=require("./components/message");
+const { embed, detach, toConceal, toConcealHmac, concealToData, noCrypt } = require('./components/message')
 
-const {compress,decompress}=require("./components/compact");
+const { compress, decompress } = require('./components/compact')
 
-const {byteToBin,compliment} = require('./components/util');
+const { byteToBin, compliment } = require('./components/util')
 
+class StegCloak {
+  hide (data, integrity, crypt) {
+    const { message, key, cover } = data
 
+    const secret = R.pipe(compress, compliment)(message) // Compress and compliment to prepare the secret
 
-function hide(message, key, cover,integrity) {
+    const payload = crypt ? encrypt({ password: key, data: secret, integrity }) : secret // Encrypt if needed or proxy secret
 
-    const secret=R.pipe(compress,compliment)(message);
+    const invisibleStream = R.pipe(byteToBin, integrity ? toConcealHmac : crypt ? toConceal : noCrypt)(payload) // Create an invisible stream of secret
 
-    const encryptStream = encrypt({password:key,data:secret,integrity});
-    
-    const invisibleStream = R.pipe(byteToBin,integrity?toConcealHmac:toConceal)(encryptStream);
+    return embed(cover, invisibleStream) // Embed stream  with cover text
+  }
 
-    return embed(cover,invisibleStream);
+  reveal (str, key) {
+    // Detach invisible characters and convert back to visible characters and also returns analysis of if encryption or integrity check was done
+
+    const { data, integrity, encrypt } = R.pipe(detach, concealToData)(str)
+
+    const decryptStream = encrypt ? decrypt({ password: key, data, integrity }) : data // Decrypt if needed or proxy secret
+
+    return R.pipe(compliment, decompress)(decryptStream) // Receive the secret
+  }
 }
 
-
-
-function reveal(str,key){    
-
-    const encryptStream=R.pipe(detach,concealToData)(str);
-
-    let decryptStream = decrypt({password:key,data:encryptStream.data,integrity:encryptStream.integrity});
-
-    return R.pipe(compliment,decompress)(decryptStream);
-
-}
-
-
-module.exports={hide,reveal}
+module.exports = StegCloak
