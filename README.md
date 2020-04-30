@@ -2,9 +2,7 @@
   <br>
   <img src="assets/stegCloakIcon.svg" alt="stegcloak" width="100">
   <br>
-  <br>
   <span>StegCloak</span>
-  <br>
   <br>
 </h1>
 
