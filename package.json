@@ -9,7 +9,6 @@
   "license": "ISC",
   "description": "",
   "dependencies": {
-    "@babel/core": "^7.9.6",
     "clipboardy": "^2.3.0",
     "colors": "^1.4.0",
     "commander": "^5.1.0",
@@ -25,5 +24,10 @@
     "browserify": "^16.5.1",
     "minifyify": "^7.3.5",
     "standard": "^14.3.3"
+  },
+  "standard": {
+    "ignore": [
+      "./dist/"
+    ]
   }
 }

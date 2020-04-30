@@ -1,4 +1,4 @@
-const {createCipheriv,createHmac,createDecipheriv,pbkdf2Sync,randomBytes} = require('crypto')
+const { createCipheriv, createHmac, createDecipheriv, pbkdf2Sync, randomBytes } = require('crypto')
 const R = require('ramda')
 const timeSafeCheck = require('timing-safe-equal')
 const {
