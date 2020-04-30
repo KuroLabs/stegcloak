@@ -2,7 +2,7 @@
   <br>
   <img src="assets/stegCloakIcon.svg" alt="stegcloak" width="100">
   <br>
-  <br>
+   <br>
   <span>StegCloak</span>
   <br>
   <br>
@@ -10,8 +10,11 @@
 
 <h4 align="center">The Cloak of Invisibility for your texts</h4>
 
+<p align="justify">
 StegCloak is a pure JavaScript steganography module designed in functional programming style, to hide text in plain sight - with key features like encryption and top-notch text compression. It can be used in social media or for any other covert communication.
+<p>
 
+<a href="https://standardjs.com" style="position:absolute;top:610px;right:20px;padding: 0 0 20px 20px;"><img src="https://cdn.rawgit.com/feross/standard/master/sticker.svg" alt="JavaScript Standard Style" width="80" align="right"></a>
 
 ## Features
 
@@ -73,9 +76,14 @@ Options:
 ## API Usage
 
 ```javascript
-const StegCloak = require('stegcloak');  
+const StegCloak = require('stegcloak');
 
+<<<<<<< HEAD
 const stegcloak = new StegCloak(true,false);  // Initializes with encryption true and hmac false
+=======
+const stegcloak = new StegCloak();
+```
+>>>>>>> d5e5374ae05d2a63396ff5b2ab26b1bc78452ba5
 
 //Can be later changed by switching boolean flags for stegcloak.encrypt and stegcloak.integrity
 
@@ -87,25 +95,29 @@ HMAC is an additional fingerprint security step taken towards tampering of texts
 
 ### Hide
 
+<<<<<<< HEAD
 ###### `stegcloak.hide(message,password,cover) -> string`
+=======
+###### `stegcloak.hide({message, password, cover}, hmac, crypt) -> string`
+>>>>>>> d5e5374ae05d2a63396ff5b2ab26b1bc78452ba5
 
 ```javascript
 const magic = stegcloak.hide(
   {message: "Voldemort is back", password: "mischief managed", cover: "The WiFi's not working here!"},
   false, true); // false for HMAC integrity,true for encryption
 
-console.log(magic);  //The WiFi's not working here!
+console.log(magic);  // The WiFi's not working here!
 
 ```
 
 ### Reveal
 
-###### `stegcloak.reveal(data,password) -> string`
+###### `stegcloak.reveal(data, password) -> string`
 
 ```javascript
-const secret=stegcloak.reveal(magic, "mischief managed");
+const secret = stegcloak.reveal(magic, "mischief managed");
 
-console.log(secret); //Voldemort is back
+console.log(secret); // Voldemort is back
 ```
 
 ## Contributing
