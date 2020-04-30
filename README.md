@@ -1,6 +1,6 @@
 <h1 align="center">
   <br>
-  <img src="" alt="stegcloak" width="100">
+  <img src="assets/stegCloakIcon.svg" alt="stegcloak" width="100">
   <br>
   <br>
   <span>StegCloak</span>
