@@ -78,12 +78,7 @@ Options:
 ```javascript
 const StegCloak = require('stegcloak');
 
-<<<<<<< HEAD
 const stegcloak = new StegCloak(true,false);  // Initializes with encryption true and hmac false
-=======
-const stegcloak = new StegCloak();
-```
->>>>>>> d5e5374ae05d2a63396ff5b2ab26b1bc78452ba5
 
 //Can be later changed by switching boolean flags for stegcloak.encrypt and stegcloak.integrity
 
@@ -95,11 +90,7 @@ HMAC is an additional fingerprint security step taken towards tampering of texts
 
 ### Hide
 
-<<<<<<< HEAD
 ###### `stegcloak.hide(message,password,cover) -> string`
-=======
-###### `stegcloak.hide({message, password, cover}, hmac, crypt) -> string`
->>>>>>> d5e5374ae05d2a63396ff5b2ab26b1bc78452ba5
 
 ```javascript
 const magic = stegcloak.hide(
