@@ -14,6 +14,7 @@
 StegCloak is a pure JavaScript steganography module designed in functional programming style, to hide text in plain sight - with key features like encryption and top-notch text compression. It can be used in social media or for any other covert communication.
 <p>
 
+<a href="https://standardjs.com" style="position:absolute;top:610px;right:20px;padding: 0 0 20px 20px;"><img src="https://cdn.rawgit.com/feross/standard/master/sticker.svg" alt="JavaScript Standard Style" width="80" align="right"></a>
 
 ## Features
 
