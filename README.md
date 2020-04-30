@@ -19,7 +19,7 @@ StegCloak is a pure JavaScript steganography module designed in functional progr
 - Compression to reduce the payload
 - Completely invisble, uses Zero Width Characters instead of white spaces or tabs
 - Additional HMAC integrity
-- Usage - Available as an API module, CLI and <a href='https://stegcloak.surge.sh'>Web</a>. Works everywhere!
+- Usage - Available as an API module, a CLI and also a <a href='https://stegcloak.surge.sh'>Web interface</a>. Works everywhere!
 - Written in pure functional style
 
 ## Installing
@@ -49,7 +49,7 @@ stegcloak hide <secret> <password> -c <covertext>
 Options:
 
 ```
-  -c, --cover <covertext>  Text that you want to hide your secret with
+  -c, --cover <covertext>  Text that you want to hide your secret within
   -n, --nocrypt            If you don't need encryption (default: false)
   -i, --integrity          If additional security of preventing tampering is needed (default: false)
   -h, --help               display help for command
@@ -72,7 +72,7 @@ Options:
 ## API Usage
 
 ```javascript
-const StegCloak = require('stegcloak'); //require 
+const StegCloak = require('stegcloak'); // require 
 
 const stegcloak = new StegCloak();
 ```
