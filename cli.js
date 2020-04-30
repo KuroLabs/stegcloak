@@ -18,8 +18,8 @@ program
 
 program
   .command('reveal <password>')
-  .option('-cp, --clip')
-  .option('-d, --data <data>')
+  .option('-cp, --clip','Copy Data directly from clipboard')
+  .option('-d, --data <data>','Data to be decrypted')
   .action((password, args) => {
     let payload
     if (args.clip) { payload = clipboardy.readSync() } else if (args.data) { payload = args.data } else { console.log('Missing Data!'); return }
