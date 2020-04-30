@@ -6,12 +6,14 @@ const stegcloak = new StegCloak()
 
 program
   .command('hide <secret> <password>')
-  .option('-c, --cover <covertext>')
+  .option('-c, --cover <covertext>','Text that you want to hide your secret within')
+  .option('-cp, --clip','Copy Data directly from clipboard')
   .option('-n, --nocrypt', "If you don't need encryption", false)
   .option('-i, --integrity', 'If additional security of preventing tampering is needed', false)
   .action((secret, password, args) => {
-    const cover = (args.cover) ? args.cover : 'This is a confidential text.'
-    const payload = stegcloak.hide({ message: secret, key: password, cover }, args.integrity, !args.nocrypt)
+    let cover;
+    if (args.clip) { cover = clipboardy.readSync(); }else{cover=args.cover? args.cover : 'This is a confidential text.'};
+    const payload = stegcloak.hide({ message: secret,password, cover }, args.integrity, !args.nocrypt)
     clipboardy.writeSync(payload)
     console.log(color.grey('Copied to clipboard'))
   })

@@ -50,6 +50,7 @@ Options:
 
 ```
   -c, --cover <covertext>  Text that you want to hide your secret within
+  -cp, --clip              Copy Data directly from clipboard
   -n, --nocrypt            If you don't need encryption (default: false)
   -i, --integrity          If additional security of preventing tampering is needed (default: false)
   -h, --help               display help for command
@@ -72,23 +73,46 @@ Options:
 ## API Usage
 
 ```javascript
-const StegCloak = require('stegcloak'); // require 
+const StegCloak = require('stegcloak');  
 
-const stegcloak = new StegCloak();
+const stegcloak = new StegCloak(); 
 ```
+
+
 
 ### Hide
+
+###### `stegcloak.hide({message,password,cover},hmac,crypt) -> string`
+
 ```javascript
 const magic = stegcloak.hide(
-  {message: "Voldemort is back", key: "mischief managed", cover: "The WiFi's not working here!"},
-  false, true);
+  {message: "Voldemort is back", password: "mischief managed", cover: "The WiFi's not working here!"},
+  false, true); // false for HMAC integrity,true for encryption
+
+console.log(magic);  //The WiFi's not working here!
+
 ```
+###### What's HMAC and do I need it?
+<p align='justify'>
+HMAC is an additional fingerprint security step taken towards tampering of texts and to verify if the message received was actually sent by the intended sender, ideally if the data is sent through whatsapp,messenger or possibly any social media this is already taken care of ! But if you are using stegcloak in your program to safely transmit and retrieve, this option can be enabled and stegcloak takes care of it.
+</p>
+
+
 
 ### Reveal
+
+###### `stegcloak.reveal(data,password) -> string`
+
 ```javascript
-stegcloak.reveal(magic, "mischief managed");
+const secret=stegcloak.reveal(magic, "mischief managed");
+
+console.log(secret); //Voldemort is back
 ```
 
 ## Contributing
 
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
+
+## License
+
+[MIT](https://github.com/KuroLabs/stegcloak/blob/master/LICENSE.md) - Copyright (c) 2020 [Jyothishmathi CV](https://github.com/JyothishmathiCV), [Kandavel A](https://github.com/AK5123), [Mohanasundar M](https://github.com/mohanpierce99)
