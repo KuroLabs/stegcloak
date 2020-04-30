@@ -80,6 +80,8 @@ const StegCloak = require('stegcloak');
 
 const stegcloak = new StegCloak(true,false);  // Initializes with encryption true and hmac false
 
+// These parameters are'nt required for decryption , stegcloak automatically decrypts given a message and correct key
+
 //Can be later changed by switching boolean flags for stegcloak.encrypt and stegcloak.integrity
 
 ```
