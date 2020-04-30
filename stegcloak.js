@@ -21,7 +21,7 @@ class StegCloak {
     this.integrity = _integrity
   };
 
-  hide (message, password, cover) {
+  hide (message, password, cover="This is a confidential text") {
     const integrity = this.integrity
 
     const crypt = this.encrypt
