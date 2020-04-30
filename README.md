@@ -75,14 +75,19 @@ Options:
 ```javascript
 const StegCloak = require('stegcloak');  
 
-const stegcloak = new StegCloak(); 
+const stegcloak = new StegCloak(true,false);  // Initializes with encryption true and hmac false
+
+//Can be later changed by switching boolean flags for stegcloak.encrypt and stegcloak.integrity
+
 ```
-
-
+###### What's HMAC and do I need it?
+<p align='justify'>
+HMAC is an additional fingerprint security step taken towards tampering of texts and to verify if the message received was actually sent by the intended sender, ideally if the data is sent through whatsapp,messenger or possibly any social media this is already taken care of ! But if you are using stegcloak in your program to safely transmit and retrieve, this option can be enabled and stegcloak takes care of it.
+</p>
 
 ### Hide
 
-###### `stegcloak.hide({message,password,cover},hmac,crypt) -> string`
+###### `stegcloak.hide(message,password,cover) -> string`
 
 ```javascript
 const magic = stegcloak.hide(
@@ -92,12 +97,6 @@ const magic = stegcloak.hide(
 console.log(magic);  //The WiFi's not working here!
 
 ```
-###### What's HMAC and do I need it?
-<p align='justify'>
-HMAC is an additional fingerprint security step taken towards tampering of texts and to verify if the message received was actually sent by the intended sender, ideally if the data is sent through whatsapp,messenger or possibly any social media this is already taken care of ! But if you are using stegcloak in your program to safely transmit and retrieve, this option can be enabled and stegcloak takes care of it.
-</p>
-
-
 
 ### Reveal
 

@@ -1,4 +1,9 @@
-const { createCipheriv, createHmac, createDecipheriv, pbkdf2Sync, randomBytes } = require('crypto')
+const aes = require('browserify-cipher')
+const { createCipheriv, createDecipheriv } = aes
+var randomBytes = require('randombytes')
+var pbkdf2Sync = require('pbkdf2').pbkdf2Sync
+var createHmac = require('create-hmac')
+
 const R = require('ramda')
 const timeSafeCheck = require('timing-safe-equal')
 const {

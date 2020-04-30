@@ -2,21 +2,35 @@ const R = require('ramda')
 
 const { encrypt, decrypt } = require('./components/encrypt')
 
-const { embed, detach, toConceal, toConcealHmac, concealToData, noCrypt } = require('./components/message')
-
 const { compress, decompress } = require('./components/compact')
+
+const {
+  embed,
+  detach,
+  toConceal,
+  toConcealHmac,
+  concealToData,
+  noCrypt
+} = require('./components/message')
 
 const { byteToBin, compliment } = require('./components/util')
 
 class StegCloak {
-  hide (data, integrity, crypt) {
-    const { message, password, cover } = data
+  constructor (_encrypt = true, _integrity = false) {
+    this.encrypt = _encrypt
+    this.integrity = _integrity
+  };
+
+  hide (message, password, cover) {
+    const integrity = this.integrity
+
+    const crypt = this.encrypt
 
     const secret = R.pipe(compress, compliment)(message) // Compress and compliment to prepare the secret
 
     const payload = crypt ? encrypt({ password: password, data: secret, integrity }) : secret // Encrypt if needed or proxy secret
 
-    const invisibleStream = R.pipe(byteToBin, integrity ? toConcealHmac : crypt ? toConceal : noCrypt)(payload) // Create an invisible stream of secret
+    const invisibleStream = R.pipe(byteToBin, integrity && crypt ? toConcealHmac : crypt ? toConceal : noCrypt)(payload) // Create an invisible stream of secret
 
     return embed(cover, invisibleStream) // Embed stream  with cover text
   }

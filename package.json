@@ -9,12 +9,16 @@
   "license": "ISC",
   "description": "",
   "dependencies": {
+    "browserify-cipher": "^1.0.1",
     "clipboardy": "^2.3.0",
     "colors": "^1.4.0",
     "commander": "^5.1.0",
+    "create-hmac": "^1.1.7",
     "crypto-browserify": "^3.12.0",
     "lzutf8": "^0.5.5",
+    "pbkdf2": "^3.0.17",
     "ramda": "^0.27.0",
+    "randombytes": "^2.1.0",
     "safe-buffer": "^5.2.0",
     "timing-safe-equal": "^1.0.0"
   },
@@ -22,8 +26,12 @@
     "babel-preset-es2015": "^6.24.1",
     "babelify": "^10.0.0",
     "browserify": "^16.5.1",
+    "html-webpack-plugin": "^4.3.0",
     "minifyify": "^7.3.5",
-    "standard": "^14.3.3"
+    "standard": "^14.3.3",
+    "webpack": "^4.43.0",
+    "webpack-cli": "^3.3.11",
+    "webpack-dev-server": "^3.10.3"
   },
   "standard": {
     "ignore": [
