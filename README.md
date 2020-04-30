@@ -4,6 +4,7 @@
   <br>
   <span>StegCloak</span>
   <br>
+  <br>
 </h1>
 
 <h4 align="center">The Cloak of Invisibility for your texts</h4>
