@@ -10,26 +10,26 @@
 
 <h4 align="center">The Cloak of Invisibility for your texts</h4>
 
-StegCloak is a Pure javascript stegnography module designed in functional programming style to hide text in plain sight with key features like encryption and top notch text compression . It can be used in social media or for any other covert communications.
+StegCloak is a pure JavaScript steganography module designed in functional programming style, to hide text in plain sight - with key features like encryption and top-notch text compression. It can be used in social media or for any other covert communication.
 
 
 ## Features
 
 - Cryptographically secure by encrypting the invisible secret
 - Compression to reduce the payload
-- Completely invisble uses Zero Width Characters instead of white spaces or tabs
+- Completely invisble, uses Zero Width Characters instead of white spaces or tabs
 - Additional HMAC integrity
-- Usage - Available as an API module,CLI and  <a href='https://stegcloak.surge.sh'>Web</a>. Works everywhere !
-- Written in pure Functional style
+- Usage - Available as an API module, CLI and <a href='https://stegcloak.surge.sh'>Web</a>. Works everywhere!
+- Written in pure functional style
 
 ## Installing
 
-Using npm :
+Using npm,
 
 ```bash
 $ npm install -g stegcloak
 ```
-Using npm : To use it locally in your program
+Using npm (to use it locally in your program),
 
 ```bash
 $ npm install stegcloak
@@ -39,7 +39,7 @@ $ npm install stegcloak
 
 <img src='assets/Flow.PNG'>
 
-## Usage CLI
+## CLI Usage
 
 ### Hide
 
@@ -49,7 +49,7 @@ stegcloak hide <secret> <password> -c <covertext>
 Options:
 
 ```
-  -c, --cover <covertext>  Text that you want to hide your secret
+  -c, --cover <covertext>  Text that you want to hide your secret with
   -n, --nocrypt            If you don't need encryption (default: false)
   -i, --integrity          If additional security of preventing tampering is needed (default: false)
   -h, --help               display help for command
@@ -69,23 +69,24 @@ Options:
   -h, --help         display help for command
 ```
 
-## Usage API
+## API Usage
 
 ```javascript
-const StegCloak=require('stegcloak'); //require 
+const StegCloak = require('stegcloak'); //require 
 
-const stegcloak=new StegCloak();
+const stegcloak = new StegCloak();
 ```
+
 ### Hide
 ```javascript
 const magic = stegcloak.hide(
-  {message:'Voldemort is back',key:'mischief managed',cover:"The Wifi's not working here !"},
-  false,true);
+  {message: "Voldemort is back", key: "mischief managed", cover: "The WiFi's not working here!"},
+  false, true);
 ```
 
 ### Reveal
 ```javascript
-stegcloak.reveal(magic,'mischief managed');
+stegcloak.reveal(magic, "mischief managed");
 ```
 
 ## Contributing
