@@ -80,7 +80,7 @@ const StegCloak = require('stegcloak');
 
 const stegcloak = new StegCloak(true,false);  // Initializes with encryption true and hmac false for hiding
 
-// These paramters won't impact the reveal(),stegcloak automatically decrypts given a message and correct pass
+// These paramters won't impact the reveal(),stegcloak automatically decrypts given the correct password
 
 //Can be later changed by switching boolean flags for stegcloak.encrypt and stegcloak.integrity
 
