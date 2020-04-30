@@ -82,14 +82,14 @@ const stegcloak = new StegCloak();
 
 ### Hide
 
-###### `stegcloak.hide({message,password,cover},hmac,crypt) -> string`
+###### `stegcloak.hide({message, password, cover}, hmac, crypt) -> string`
 
 ```javascript
 const magic = stegcloak.hide(
   {message: "Voldemort is back", password: "mischief managed", cover: "The WiFi's not working here!"},
   false, true); // false for HMAC integrity,true for encryption
 
-console.log(magic);  //The WiFi's not working here!
+console.log(magic);  // The WiFi's not working here!
 
 ```
 ###### What's HMAC and do I need it?
@@ -101,12 +101,12 @@ HMAC is an additional fingerprint security step taken towards tampering of texts
 
 ### Reveal
 
-###### `stegcloak.reveal(data,password) -> string`
+###### `stegcloak.reveal(data, password) -> string`
 
 ```javascript
-const secret=stegcloak.reveal(magic, "mischief managed");
+const secret = stegcloak.reveal(magic, "mischief managed");
 
-console.log(secret); //Voldemort is back
+console.log(secret); // Voldemort is back
 ```
 
 ## Contributing
