@@ -1,6 +1,6 @@
 <h1 align="center">
   <br>
-  <img src="https://image.flaticon.com/icons/svg/2834/2834784.svg" alt="stegcloak" width="100">
+  <img src="" alt="stegcloak" width="100">
   <br>
   <br>
   <span>StegCloak</span>

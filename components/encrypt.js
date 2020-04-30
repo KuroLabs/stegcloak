@@ -3,8 +3,8 @@ const R = require('ramda')
 const timeSafeCheck = require('timing-safe-equal')
 const {
   toBuffer,
-  concat_buff,
-  buff_slice
+  concatBuff,
+  buffSlice
 } = require('./util.js')
 
 // Key generation from a password
@@ -22,12 +22,12 @@ const encrypt = config => { // Impure function Side-effects!
   } = _bootEncrypt(config, salt)
 
   const cipher = createCipheriv('aes-256-ctr', key, iv)
-  const payload = concat_buff([cipher.update(secret, 'utf8'), cipher.final()])
+  const payload = concatBuff([cipher.update(secret, 'utf8'), cipher.final()])
   if (config.integrity) {
     const hmac = createHmac('sha256', key).update(secret).digest()
-    return concat_buff([salt, hmac, payload])
+    return concatBuff([salt, hmac, payload])
   }
-  return concat_buff([salt, payload])
+  return concatBuff([salt, payload])
 }
 
 const decrypt = (config) => {
@@ -35,13 +35,13 @@ const decrypt = (config) => {
     iv,
     key,
     secret,
-    hmac_data
+    hmacData
   } = _bootDecrypt(config, null)
   const decipher = createDecipheriv('aes-256-ctr', key, iv)
-  const decrypted = concat_buff([decipher.update(secret, 'utf8'), decipher.final()])
+  const decrypted = concatBuff([decipher.update(secret, 'utf8'), decipher.final()])
   if (config.integrity) {
-    const v_hmac = createHmac('sha256', key).update(secret).digest()
-    if (timeSafeCheck(hmac_data, v_hmac)) {
+    const vHmac = createHmac('sha256', key).update(secret).digest()
+    if (timeSafeCheck(hmacData, vHmac)) {
       throw new Error('HMAC_assertion_failed')
     }
   }
@@ -57,18 +57,18 @@ const _extract = (mode, config, salt) => {
   if (mode === 'encrypt') {
     output.secret = data
   } else if (mode === 'decrypt') {
-    salt = buff_slice(data, 0, 16)
+    salt = buffSlice(data, 0, 16)
     if (config.integrity) {
-      output.hmac_data = buff_slice(data, 16, 48)
-      output.secret = buff_slice(data, 48)
+      output.hmacData = buffSlice(data, 16, 48)
+      output.secret = buffSlice(data, 48)
     } else {
-      output.secret = buff_slice(data, 16)
+      output.secret = buffSlice(data, 16)
     }
   }
 
-  const iv_key = _genKey(config.password, salt)
-  output.iv = buff_slice(iv_key, 0, 16)
-  output.key = buff_slice(iv_key, 16)
+  const ivKey = _genKey(config.password, salt)
+  output.iv = buffSlice(ivKey, 0, 16)
+  output.key = buffSlice(ivKey, 16)
   return output
 }
 

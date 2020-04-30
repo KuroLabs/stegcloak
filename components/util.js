@@ -5,7 +5,7 @@ const R = require('ramda')
 const _not = x => x.map(y => ~y)
 
 // Slice a buffer
-const buff_slice = (x, y, z = x.length) => toBuffer(byarr(x).slice(y, z))
+const buffSlice = (x, y, z = x.length) => toBuffer(byarr(x).slice(y, z))
 
 // Convert to byte array and apply complement
 const compliment = x => _not(byarr(x))
@@ -20,7 +20,7 @@ const stepMap = R.curry((callback, step, array) => {
 })
 
 // Concatenate buffers
-const concat_buff = x => Buffer.concat(x)
+const concatBuff = x => Buffer.concat(x)
 
 // convert byte array to buffer
 const toBuffer = x => Buffer.from(x)
@@ -60,7 +60,7 @@ module.exports = {
   nTobin,
   zeroPad,
   binToByte,
-  concat_buff,
-  buff_slice,
+  concatBuff,
+  buffSlice,
   stepMap
 }
