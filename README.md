@@ -10,7 +10,9 @@
 
 <h4 align="center">The Cloak of Invisibility for your texts</h4>
 
+<p align="justify">
 StegCloak is a pure JavaScript steganography module designed in functional programming style, to hide text in plain sight - with key features like encryption and top-notch text compression. It can be used in social media or for any other covert communication.
+<p>
 
 
 ## Features
@@ -73,9 +75,9 @@ Options:
 ## API Usage
 
 ```javascript
-const StegCloak = require('stegcloak');  
+const StegCloak = require('stegcloak');
 
-const stegcloak = new StegCloak(); 
+const stegcloak = new StegCloak();
 ```
 
 
