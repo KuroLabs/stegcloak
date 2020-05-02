@@ -1,8 +1,10 @@
-const R = require('ramda')
+'use strict'
 
-const { encrypt, decrypt } = require('./components/encrypt')
+const R = require('ramda');
 
-const { compress, decompress } = require('./components/compact')
+const { encrypt, decrypt } = require('./components/encrypt');
+
+const { compress, decompress } = require('./components/compact');
 
 const {
   embed,
@@ -11,7 +13,7 @@ const {
   toConcealHmac,
   concealToData,
   noCrypt
-} = require('./components/message')
+} = require('./components/message');
 
 const { byteToBin, compliment } = require('./components/util')
 
@@ -22,6 +24,9 @@ class StegCloak {
   };
 
   hide (message, password, cover="This is a confidential text") {
+
+    if(cover.split(' ').length===1){throw new Error('Minimum two words required');};
+
     const integrity = this.integrity
 
     const crypt = this.encrypt

@@ -1,3 +1,5 @@
+'use strict'
+
 const Buffer = require('safe-buffer').Buffer
 const R = require('ramda')
 

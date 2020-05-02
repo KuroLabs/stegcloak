@@ -1,3 +1,5 @@
+'use strict'
+
 const aes = require('browserify-cipher')
 const { createCipheriv, createDecipheriv } = aes
 var randomBytes = require('randombytes')
@@ -47,7 +49,7 @@ const decrypt = (config) => {
   if (config.integrity) {
     const vHmac = createHmac('sha256', key).update(secret).digest()
     if (timeSafeCheck(hmacData, vHmac)) {
-      throw new Error('HMAC_assertion_failed')
+      throw new Error('Wrong password or Wrong payload (Hmac Integrity failure) ')
     }
   }
   return decrypted
