@@ -2,7 +2,7 @@
   <br>
   <img src="assets/stegCloakIcon.svg" alt="stegcloak" width="100">
   <br>
-   <br>
+  <br>
   <span>StegCloak</span>
   <br>
   <br>
@@ -14,7 +14,7 @@
 StegCloak is a pure JavaScript steganography module designed in functional programming style, to hide text in plain sight - with key features like encryption and top-notch text compression. It can be used in social media or for any other covert communication.
 <p>
 
-<a href="https://standardjs.com" style="position:absolute;top:610px;right:20px;padding: 0 0 20px 20px;"><img src="https://cdn.rawgit.com/feross/standard/master/sticker.svg" alt="JavaScript Standard Style" width="80" align="right"></a>
+<a href="https://standardjs.com" style="position: absolute; top: 610px; right: 20px; padding: 0 0 20px 20px;"><img src="https://cdn.rawgit.com/feross/standard/master/sticker.svg" alt="JavaScript Standard Style" width="80" align="right"></a>
 
 ## Features
 
@@ -79,24 +79,25 @@ Options:
 ```javascript
 const StegCloak = require('stegcloak');
 
-const stegcloak = new StegCloak(true,false);  // Initializes with encryption true and hmac false
+const stegcloak = new StegCloak(true, false);  // Initializes with encryption true and hmac false for hiding
 
-//Can be later changed by switching boolean flags for stegcloak.encrypt and stegcloak.integrity
+// These parameters don't impact the reveal(), stegcloak automatically decrypts when given the correct password
+// Can be changed later by switching boolean flags for stegcloak.encrypt and stegcloak.integrity
 
 ```
 ###### What's HMAC and do I need it?
 <p align='justify'>
-HMAC is an additional fingerprint security step taken towards tampering of texts and to verify if the message received was actually sent by the intended sender, ideally if the data is sent through whatsapp,messenger or possibly any social media this is already taken care of ! But if you are using stegcloak in your program to safely transmit and retrieve, this option can be enabled and stegcloak takes care of it.
+HMAC is an additional fingerprint security step taken towards tampering of texts and to verify if the message received was actually sent by the intended sender. If the data is sent through WhatsApp, Messenger or any social media platform, this is already taken care of! However, if you are using stegcloak in your program to safely transmit and retrieve, this option can be enabled and stegcloak takes care of it.
 </p>
 
 ### Hide
 
-###### `stegcloak.hide(message,password,cover) -> string`
+###### `stegcloak.hide(secret,password,cover) -> string`
 
 ```javascript
-const magic = stegcloak.hide(
-  {message: "Voldemort is back", password: "mischief managed", cover: "The WiFi's not working here!"},
-  false, true); // false for HMAC integrity,true for encryption
+const magic = stegcloak.hide("Voldemort is back", "mischief managed", "The WiFi's not working here!");
+
+// Uses stegcloak.encrypt and stegcloak.integrity booleans for obfuscation
 
 console.log(magic);  // The WiFi's not working here!
 
@@ -111,6 +112,12 @@ const secret = stegcloak.reveal(magic, "mischief managed");
 
 console.log(secret); // Voldemort is back
 ```
+## Resources and Citations
+
+The following papers were referred to for insights and understanding of using Zero width characters in stegnography. Ideas from these papers were implemented to build stegcloak.
+
+- Aman, Muhammad & Khan, Aihab & Ahmad, Basheer & Kouser, Saeeda. (2017). A HYBRID TEXT STEGANOGRAPHY APPROACH UTILIZING UNICODE SPACE CHARACTERS AND ZERO-WIDTH CHARACTER. International Journal on Information Technologies & Security. 9. 
+- Taleby Ahvanooey, Milad & Li, Qianmu & Hou, Jun & Dana Mazraeh, Hassan & Zhang, Jing. (2018). AITSteg: An Innovative Text Steganography Technique for Hidden Transmission of Text Message via Social Media. IEEE Access. 2018. 65981-65995. 10.1109/ACCESS.2018.2866063. 
 
 ## Contributing
 
