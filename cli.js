@@ -17,7 +17,7 @@ program
   .option('-f, --file <file> ', "Extract input from file")
   .option('-n, --nocrypt', "If you don't need encryption", false)
   .option('-i, --integrity', 'If additional security of preventing tampering is needed', false)
-  .option('-o, --output <output> ', "Extract results to output file")
+  .option('-o, --output <output> ', "Stream the results to an output file")
   .action(async (secret,cover, args) => {
     console.log('\n');
     let questions = [{
@@ -59,7 +59,7 @@ program
   .command('reveal [data]')
   .option('-f, --file <file> ', "Extract input from file")
   .option('-cp, --clip', 'Copy Data directly from clipboard')
-  .option('-o, --output <output> ', "Output file that secret will be extracted to")
+  .option('-o, --output <output> ', "Stream the secret to an output file")
   .action((data, args) => {
     console.log('\n');
     const questions=[{

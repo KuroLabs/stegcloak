@@ -6,21 +6,14 @@ const { encrypt, decrypt } = require('./components/encrypt');
 
 const { compress, decompress } = require('./components/compact');
 
-const {
-  embed,
-  detach,
-  toConceal,
-  toConcealHmac,
-  concealToData,
-  noCrypt
-} = require('./components/message');
+const {embed,detach,toConceal,toConcealHmac,concealToData,noCrypt} = require('./components/message');
 
 const { byteToBin, compliment } = require('./components/util')
 
 class StegCloak {
   constructor (_encrypt = true, _integrity = false) {
-    this.encrypt = _encrypt
-    this.integrity = _integrity
+    this.encrypt = _encrypt;
+    this.integrity = _integrity;
   };
 
   hide (message, password, cover="This is a confidential text") {

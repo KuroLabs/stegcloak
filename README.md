@@ -59,7 +59,7 @@ Options:
   -f, --file <file>       Extract input from file
   -n, --nocrypt           If you don't need encryption (default: false)
   -i, --integrity         If additional security of preventing tampering is needed (default: false)
-  -o, --output <output>   Extract results to output file
+  -o, --output <output>   Stream the results to an output file
   -h, --help              display help for command
 
 ```
@@ -78,7 +78,7 @@ Options:
 
   -f, --file <file>       Extract input from file
   -cp, --clip             Copy Data directly from clipboard
-  -o, --output <output>   Output file that secret will be extracted to
+  -o, --output <output>   Stream the secret to an output file
   -h, --help              display help for command
 ```
 
@@ -89,7 +89,7 @@ const StegCloak = require('stegcloak');
 
 const stegcloak = new StegCloak(true, false);  // Initializes with encryption true and hmac false for hiding
 
-// Parameters don't impact the reveal(), stegcloak automatically decrypts when given the correct password
+// These arguments are used only during hide
 
 // Can be changed later by switching boolean flags for stegcloak.encrypt and stegcloak.integrity
 
@@ -119,15 +119,30 @@ console.log(magic);  // The WiFi's not working here!
 ```javascript
 const secret = stegcloak.reveal(magic, "mischief managed");
 
+// Automatically detects if encryption or integrity checks were done during hide and acts accordingly
+
 console.log(secret); // Voldemort is back
 ```
 ## Resources and Citations
 
-The following papers were referred to for insights and understanding of using Zero width characters in stegnography. Ideas from these papers were implemented to build stegcloak.
+The following papers were referred to for insights and understanding of using Zero width characters in stegnography. Ideas from these papers were implemented to build stegcloak :
 
-- Aman, Muhammad & Khan, Aihab & Ahmad, Basheer & Kouser, Saeeda. (2017). A HYBRID TEXT STEGANOGRAPHY APPROACH UTILIZING UNICODE SPACE CHARACTERS AND ZERO-WIDTH CHARACTER. International Journal on Information Technologies & Security. 9. 
 
-- Taleby Ahvanooey, Milad & Li, Qianmu & Hou, Jun & Dana Mazraeh, Hassan & Zhang, Jing. (2018). AITSteg: An Innovative Text Steganography Technique for Hidden Transmission of Text Message via Social Media. IEEE Access. 2018. 65981-65995. 10.1109/ACCESS.2018.2866063. 
+- Aman, Muhammad & Khan, Aihab & Ahmad, Basheer & Kouser, Saeeda. (2017).
+```
+        A Hybrid Text Steganography Approach Utilizing Unicode Space Characters And Zero-width Character
+      
+                  International Journal on Information Technologies & Security.
+```
+
+- Taleby Ahvanooey, Milad & Li, Qianmu & Hou, Jun & Dana Mazraeh, Hassan & Zhang, Jing.
+```
+        AITSteg: An Innovative Text Steganography Technique for Hidden Transmission of Text Message via Social Media. 
+        
+                  IEEE Access
+```
+
+
 
 ## Contributing
 
@@ -136,3 +151,6 @@ Pull requests are welcome. For major changes, please open an issue first to disc
 ## License
 
 [MIT](https://github.com/KuroLabs/stegcloak/blob/master/LICENSE.md) - Copyright (c) 2020 [Jyothishmathi CV](https://github.com/JyothishmathiCV), [Kandavel A](https://github.com/AK5123), [Mohanasundar M](https://github.com/mohanpierce99)
+
+## Acknowledgements
+The stegcloak logo was designed by <a href="https://www.flaticon.com/authors/smashicons" title="Smashicons">Smashicons</a>
