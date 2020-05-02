@@ -48,11 +48,14 @@ $ npm install stegcloak
 ### Hide
 
 ```bash
-stegcloak hide [secret] [cover]
+ stegcloak hide        # The tool automatically prompts for the inputs
 ```
 Options:
+ 
 
 ```
+  hide [options] [secret] [cover]
+
   -f, --file <file>       Extract input from file
   -n, --nocrypt           If you don't need encryption (default: false)
   -i, --integrity         If additional security of preventing tampering is needed (default: false)
@@ -65,11 +68,14 @@ Options:
 ### Reveal
 
 ```bash
-stegcloak reveal [data]
+stegcloak reveal       
 ```
 Options:
 
+
 ```
+  reveal [data]
+
   -f, --file <file>       Extract input from file
   -cp, --clip             Copy Data directly from clipboard
   -o, --output <output>   Output file that secret will be extracted to
