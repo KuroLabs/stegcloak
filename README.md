@@ -48,30 +48,32 @@ $ npm install stegcloak
 ### Hide
 
 ```bash
-stegcloak hide <secret> <password> -c <covertext>
+stegcloak hide [secret] [cover]
 ```
 Options:
 
 ```
-  -c, --cover <covertext>  Text that you want to hide your secret within
-  -cp, --clip              Copy Data directly from clipboard
-  -n, --nocrypt            If you don't need encryption (default: false)
-  -i, --integrity          If additional security of preventing tampering is needed (default: false)
-  -h, --help               display help for command
+  -f, --file <file>       Extract input from file
+  -n, --nocrypt           If you don't need encryption (default: false)
+  -i, --integrity         If additional security of preventing tampering is needed (default: false)
+  -o, --output <output>   Extract results to output file
+  -h, --help              display help for command
+
 ```
 
 
 ### Reveal
 
 ```bash
-stegcloak reveal <password> -cp
+stegcloak reveal [data]
 ```
 Options:
 
 ```
-  -cp, --clip        Copy Data directly from clipboard
-  -d, --data <data>  Data to be decrypted
-  -h, --help         display help for command
+  -f, --file <file>       Extract input from file
+  -cp, --clip             Copy Data directly from clipboard
+  -o, --output <output>   Output file that secret will be extracted to
+  -h, --help              display help for command
 ```
 
 ## API Usage
@@ -81,7 +83,8 @@ const StegCloak = require('stegcloak');
 
 const stegcloak = new StegCloak(true, false);  // Initializes with encryption true and hmac false for hiding
 
-// These parameters don't impact the reveal(), stegcloak automatically decrypts when given the correct password
+// Parameters don't impact the reveal(), stegcloak automatically decrypts when given the correct password
+
 // Can be changed later by switching boolean flags for stegcloak.encrypt and stegcloak.integrity
 
 ```
@@ -117,6 +120,7 @@ console.log(secret); // Voldemort is back
 The following papers were referred to for insights and understanding of using Zero width characters in stegnography. Ideas from these papers were implemented to build stegcloak.
 
 - Aman, Muhammad & Khan, Aihab & Ahmad, Basheer & Kouser, Saeeda. (2017). A HYBRID TEXT STEGANOGRAPHY APPROACH UTILIZING UNICODE SPACE CHARACTERS AND ZERO-WIDTH CHARACTER. International Journal on Information Technologies & Security. 9. 
+
 - Taleby Ahvanooey, Milad & Li, Qianmu & Hou, Jun & Dana Mazraeh, Hassan & Zhang, Jing. (2018). AITSteg: An Innovative Text Steganography Technique for Hidden Transmission of Text Message via Social Media. IEEE Access. 2018. 65981-65995. 10.1109/ACCESS.2018.2866063. 
 
 ## Contributing
