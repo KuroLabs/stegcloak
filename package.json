@@ -8,15 +8,18 @@
     "ramdajs",
     "stegnography-algorithms"
   ],
-  "version": "0.1.0",
+  "version": "0.0.1",
   "main": "stegcloak.js",
+  "engines" : { 
+    "node" : ">=8.0.0" 
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
+  "author": "KuroLabs",
   "licenses": [{
     "type": "MIT",
-    "url": "https://github.com/KuroLabs/stegcloak" 
+    "url": "https://github.com/KuroLabs/stegcloak/blob/master/LICENSE" 
   }],
   "bin":{
     "stegcloak":"./cli.js"
@@ -48,11 +51,9 @@
     "browserify-cipher": "^1.0.1",
     "chalk": "^4.0.0",
     "clipboardy": "^2.3.0",
-    "colors": "^1.4.0",
     "commander": "^5.1.0",
     "create-hmac": "^1.1.7",
     "crypto-browserify": "^3.12.0",
-    "csvtojson": "^2.0.10",
     "inquirer": "^7.1.0",
     "lzutf8": "^0.5.5",
     "ora": "^4.0.4",
