@@ -1,3 +1,5 @@
+'use strict'
+
 const R = require('ramda')
 const {
   zeroPad,
@@ -57,9 +59,12 @@ const embed = (cover, secret) => {
 // Detach invisble stream from cover text
 
 const detach = (str) => {
-  const payload = str.split(' ')[1]
-  const zwcBound = payload.split('').findIndex((x, i) => !(~zwc.indexOf(x)))
-  return payload.slice(0, zwcBound)
+  const payload = str.split(' ')[1];
+  const zwcBound = payload.split('');
+  const intersection=R.intersection(zwc,zwcBound);
+  if(intersection.length==0){ throw new Error('Invisible stream not detected ! Please copy paste the stegcloak text sent by the sender')};
+  const limit=zwcBound.findIndex((x, i) => !(~zwc.indexOf(x)))
+  return payload.slice(0, limit)
 }
 
 module.exports = {

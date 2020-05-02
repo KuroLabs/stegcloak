@@ -22,7 +22,8 @@ StegCloak is a pure JavaScript steganography module designed in functional progr
 - Compression to reduce the payload
 - Completely invisble, uses Zero Width Characters instead of white spaces or tabs
 - Additional HMAC integrity
-- Usage - Available as an API module, a CLI and also a <a href='https://stegcloak.surge.sh'>Web interface</a>. Works everywhere!
+- Usage - Available as an API module, a CLI and also a <a href='https://stegcloak.surge.sh'>Web interface</a>(Optimized with Web workers). Works everywhere!
+- Super fast ! Hides the wikipedia page-source for steganography (800 lines and 2,05,362 characters) in covertext of 3 words under one second
 - Written in pure functional style
 
 ## Installing
@@ -47,30 +48,38 @@ $ npm install stegcloak
 ### Hide
 
 ```bash
-stegcloak hide <secret> <password> -c <covertext>
+ stegcloak hide        # The tool automatically prompts for the inputs
 ```
 Options:
+ 
 
 ```
-  -c, --cover <covertext>  Text that you want to hide your secret within
-  -cp, --clip              Copy Data directly from clipboard
-  -n, --nocrypt            If you don't need encryption (default: false)
-  -i, --integrity          If additional security of preventing tampering is needed (default: false)
-  -h, --help               display help for command
+  hide [options] [secret] [cover]
+
+  -f, --file <file>       Extract input from file
+  -n, --nocrypt           If you don't need encryption (default: false)
+  -i, --integrity         If additional security of preventing tampering is needed (default: false)
+  -o, --output <output>   Extract results to output file
+  -h, --help              display help for command
+
 ```
 
 
 ### Reveal
 
 ```bash
-stegcloak reveal <password> -cp
+stegcloak reveal       
 ```
 Options:
 
+
 ```
-  -cp, --clip        Copy Data directly from clipboard
-  -d, --data <data>  Data to be decrypted
-  -h, --help         display help for command
+  reveal [data]
+
+  -f, --file <file>       Extract input from file
+  -cp, --clip             Copy Data directly from clipboard
+  -o, --output <output>   Output file that secret will be extracted to
+  -h, --help              display help for command
 ```
 
 ## API Usage
@@ -80,7 +89,8 @@ const StegCloak = require('stegcloak');
 
 const stegcloak = new StegCloak(true, false);  // Initializes with encryption true and hmac false for hiding
 
-// These parameters don't impact the reveal(), stegcloak automatically decrypts when given the correct password
+// Parameters don't impact the reveal(), stegcloak automatically decrypts when given the correct password
+
 // Can be changed later by switching boolean flags for stegcloak.encrypt and stegcloak.integrity
 
 ```
@@ -116,6 +126,7 @@ console.log(secret); // Voldemort is back
 The following papers were referred to for insights and understanding of using Zero width characters in stegnography. Ideas from these papers were implemented to build stegcloak.
 
 - Aman, Muhammad & Khan, Aihab & Ahmad, Basheer & Kouser, Saeeda. (2017). A HYBRID TEXT STEGANOGRAPHY APPROACH UTILIZING UNICODE SPACE CHARACTERS AND ZERO-WIDTH CHARACTER. International Journal on Information Technologies & Security. 9. 
+
 - Taleby Ahvanooey, Milad & Li, Qianmu & Hou, Jun & Dana Mazraeh, Hassan & Zhang, Jing. (2018). AITSteg: An Innovative Text Steganography Technique for Hidden Transmission of Text Message via Social Media. IEEE Access. 2018. 65981-65995. 10.1109/ACCESS.2018.2866063. 
 
 ## Contributing
