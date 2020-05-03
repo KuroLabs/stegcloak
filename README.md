@@ -122,7 +122,7 @@ const secret = stegcloak.reveal(magic, "mischief managed");
 console.log(secret); // Voldemort is back
 ```
 
-## Resources and Citations
+## Resources 
 
 The following papers were referred to for insight and understanding of using Zero Width Characters in steganography. Ideas from these papers were implemented to build StegCloak:
 
