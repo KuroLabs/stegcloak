@@ -5,9 +5,11 @@
   <br>
   <span>StegCloak</span>
   <br>
-  <br>
+  <img src="https://img.shields.io/npm/l/stegcloak?style=plastic" />
+  <a href="https://www.npmjs.com/package/stegcloak"> <img src="https://img.shields.io/npm/v/stegcloak?style=plastic" /> </a>
+  <img src="https://badgen.net/badge/icon/terminal?icon=terminal&label" />
+  <img src="https://img.shields.io/badge/code_style-standard-brightgreen.svg" />
 </h1>
-
 <h4 align="center">The Cloak of Invisibility for your texts</h4>
 
 <p align="justify">
