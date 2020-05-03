@@ -1,6 +1,6 @@
 <h1 align="center">
   <br>
-  <img src="assets/stegCloakIcon.svg" alt="stegcloak" width="100">
+  <img src="assets/stegCloakIcon.svg" alt="StegCloak" width="100">
   <br>
   <br>
   <span>StegCloak</span>
@@ -22,9 +22,9 @@ StegCloak is a pure JavaScript steganography module designed in functional progr
 - Compression to reduce the payload
 - Completely invisble, uses Zero Width Characters instead of white spaces or tabs
 - Additional HMAC integrity
-- Usage - Available as an API module, a CLI and also a <a href='https://stegcloak.surge.sh'>Web interface</a>(Optimized with Web workers). Works everywhere!
-- Super fast ! Hides the wikipedia page-source for steganography (800 lines and 2,05,362 characters) in covertext of 3 words under one second
+- Super fast! Hides the Wikipedia page-source for steganography (800 lines and 205362 characters) within a covertext of 3 words in under one second
 - Written in pure functional style
+- Usage - Available as an API module, a CLI and also a <a href='https://stegcloak.surge.sh'>Web Interface</a> (optimized with web workers). Works everywhere!
 
 ## Installing
 
@@ -48,10 +48,9 @@ $ npm install stegcloak
 ### Hide
 
 ```bash
- stegcloak hide        # The tool automatically prompts for the inputs
+$ stegcloak hide
 ```
 Options:
- 
 
 ```
   hide [options] [secret] [cover]
@@ -64,14 +63,12 @@ Options:
 
 ```
 
-
 ### Reveal
 
 ```bash
-stegcloak reveal       
+$ stegcloak reveal       
 ```
 Options:
-
 
 ```
   reveal [data]
@@ -95,8 +92,9 @@ const stegcloak = new StegCloak(true, false);  // Initializes with encryption tr
 
 ```
 ###### What's HMAC and do I need it?
+
 <p align='justify'>
-HMAC is an additional fingerprint security step taken towards tampering of texts and to verify if the message received was actually sent by the intended sender. If the data is sent through WhatsApp, Messenger or any social media platform, this is already taken care of! However, if you are using stegcloak in your program to safely transmit and retrieve, this option can be enabled and stegcloak takes care of it.
+HMAC is an additional fingerprint security step taken towards tampering of texts and to verify if the message received was actually sent by the intended sender. If the data is sent through WhatsApp, Messenger or any social media platform, this is already taken care of! However, if you are using StegCloak in your program to safely transmit and retrieve, this option can be enabled and StegCloak takes care of it.
 </p>
 
 ### Hide
@@ -123,26 +121,22 @@ const secret = stegcloak.reveal(magic, "mischief managed");
 
 console.log(secret); // Voldemort is back
 ```
+
 ## Resources and Citations
 
-The following papers were referred to for insights and understanding of using Zero width characters in stegnography. Ideas from these papers were implemented to build stegcloak :
-
+The following papers were referred to for insight and understanding of using Zero Width Characters in steganography. Ideas from these papers were implemented to build StegCloak:
 
 - Aman, Muhammad & Khan, Aihab & Ahmad, Basheer & Kouser, Saeeda. (2017).
 ```
-        A Hybrid Text Steganography Approach Utilizing Unicode Space Characters And Zero-width Character
-      
-                  International Journal on Information Technologies & Security.
+A Hybrid Text Steganography Approach Utilizing Unicode Space Characters And Zero-width Character
+International Journal on Information Technologies & Security
 ```
 
 - Taleby Ahvanooey, Milad & Li, Qianmu & Hou, Jun & Dana Mazraeh, Hassan & Zhang, Jing.
 ```
-        AITSteg: An Innovative Text Steganography Technique for Hidden Transmission of Text Message via Social Media. 
-        
-                  IEEE Access
+AITSteg: An Innovative Text Steganography Technique for Hidden Transmission of Text Message via Social Media.
+IEEE Access
 ```
-
-
 
 ## Contributing
 
@@ -153,4 +147,4 @@ Pull requests are welcome. For major changes, please open an issue first to disc
 [MIT](https://github.com/KuroLabs/stegcloak/blob/master/LICENSE.md) - Copyright (c) 2020 [Jyothishmathi CV](https://github.com/JyothishmathiCV), [Kandavel A](https://github.com/AK5123), [Mohanasundar M](https://github.com/mohanpierce99)
 
 ## Acknowledgements
-The stegcloak logo was designed by <a href="https://www.flaticon.com/authors/smashicons" title="Smashicons">Smashicons</a>
+The StegCloak logo was designed by <a href="https://www.flaticon.com/authors/smashicons" title="Smashicons">Smashicons</a>.
