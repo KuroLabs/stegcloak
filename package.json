@@ -8,7 +8,7 @@
     "ramdajs",
     "stegnography-algorithms"
   ],
-  "version": "0.0.1",
+  "version": "0.1.0",
   "main": "stegcloak.js",
   "engines" : { 
     "node" : ">=8.0.0" 
