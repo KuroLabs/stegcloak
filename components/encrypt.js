@@ -32,8 +32,8 @@ const decrypt = (config) => {
   const decipher = createDecipheriv('aes-256-ctr', key, iv)
   const decrypted = concatBuff([decipher.update(secret, 'utf8'), decipher.final()])
   if (config.integrity) {
-    const vHmac = createHmac('sha256', key).update(secret).digest()
-    if (timeSafeCheck(hmacData, vHmac)) {
+    const vHmac = createHmac('sha256', key).update(decrypted).digest()
+    if (!timeSafeCheck(hmacData, vHmac)) {
       throw new Error('Wrong password or Wrong payload (Hmac Integrity failure) ')
     }
   }
@@ -45,7 +45,6 @@ const decrypt = (config) => {
 const _extract = (mode, config, salt) => {
   const data = toBuffer(config.data)
   const output = {}
-
   if (mode === 'encrypt') {
     output.secret = data
   } else if (mode === 'decrypt') {

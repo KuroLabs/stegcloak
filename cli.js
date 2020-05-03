@@ -94,18 +94,23 @@ function cliHide(secret, password, cover, crypt, integrity,op) {
   const stegcloak = new StegCloak(crypt, integrity);
   const spinner=ora(chalk.cyan.bold("Hiding your text"));
   spinner.start();
-
-  const payload=stegcloak.hide(secret, password, cover,op);
+  let payload;
+  try{
+    payload=stegcloak.hide(secret, password, cover,op);
+  }catch(e){
+    console.log("\n");
+    console.log(chalk.red(e));
+    process.exit(0);
+  }
   clipboardy.writeSync(payload);
   setTimeout(() => {
     spinner.stop();
     if(op){
-      fs.writeFileSync(op,secret);
+      fs.writeFileSync(op,payload);
       console.log(chalk.grey(`\n Written to ${op} \n`));
       process.exit(0);
     }
     console.log('\n');
-    console.log(payload);
     console.log(chalk.grey('\nCopied to clipboard\n'));
     process.exit(0);
   },300);
@@ -120,7 +125,14 @@ function cliReveal(payload,password,op) {
   const stegcloak = new StegCloak();
   var spinner=ora(chalk.cyan.bold("Decrypting"));
   spinner.start();
-  const secret = stegcloak.reveal(payload, password);
+  let secret;
+  try{
+    secret = stegcloak.reveal(payload, password);
+  }catch(e){
+    console.log("\n");
+    console.log(chalk.red(e));
+    process.exit(0);
+  }
   setTimeout(() => {
     spinner.stop();
     if(op){
