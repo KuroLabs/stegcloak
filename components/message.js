@@ -8,14 +8,13 @@ const {
   binToByte
 } = require('./util.js')
 
-const zwc = ['‌', '​', '‍', '‎'] // 00-200C, 01-200B, 10-200D, 11-200E Where the magic happens !
+const zwc = ['‌', '‏', '‍', '‎'] // 00-200C, 01-200F, 10-200D, 11-200E Where the magic happens !
 
 // Map binary to ZWC
 const _binToZWC = str => zwc[parseInt(str, 2)]
 
 // Map ZWC to binary
 const _ZWCTobin = inp => zeroPad(nTobin(zwc.indexOf(inp)), 2)
-
 
 // Data to ZWC hidden string
 const _dataToZWC = (integrity, crypt, str) => {
@@ -41,7 +40,7 @@ const noCrypt = R.curry(_dataToZWC)(false)(false)
 // ZWC string to data
 const concealToData = (str) => {
   const { encrypt, integrity } = flagDetector(str)
-  return {encrypt,integrity,data: binToByte(str.slice(1).split('').map(x => _ZWCTobin(x)).join('')) }
+  return { encrypt, integrity, data: binToByte(str.slice(1).split('').map(x => _ZWCTobin(x)).join('')) }
 }
 
 // Embed invisble stream to cover text
@@ -54,11 +53,11 @@ const embed = (cover, secret) => {
 // Detach invisble stream from cover text
 
 const detach = (str) => {
-  const payload = str.split(' ')[1];
-  const zwcBound = payload.split('');
-  const intersection=R.intersection(zwc,zwcBound);
-  if(intersection.length==0){ throw new Error('Invisible stream not detected ! Please copy paste the stegcloak text sent by the sender')};
-  const limit=zwcBound.findIndex((x, i) => !(~zwc.indexOf(x)))
+  const payload = str.split(' ')[1]
+  const zwcBound = payload.split('')
+  const intersection = R.intersection(zwc, zwcBound)
+  if (intersection.length === 0) { throw new Error('Invisible stream not detected ! Please copy paste the stegcloak text sent by the sender') };
+  const limit = zwcBound.findIndex((x, i) => !(~zwc.indexOf(x)))
   return payload.slice(0, limit)
 }
 

@@ -4,7 +4,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 module.exports = {
   entry: './stegcloak.js',
   output: {
-    filename: 'stegcloak.js',
+    filename: 'stegcloak.min.js',
     path: path.resolve(__dirname, 'dist'),
     library:'StegCloak'
   },
