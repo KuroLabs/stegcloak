@@ -8,7 +8,7 @@ const {
   binToByte
 } = require('./util.js')
 
-const zwc = ['‌', '‏', '‍', '‎'] // 00-200C, 01-200F, 10-200D, 11-200E Where the magic happens !
+const zwc = ['‌', '⁣', '‍', '⁤','⁢','᠎'] // 00-200C, 01-2063, 10-200D, 11-2064,2062,180e Where the magic happens !
 
 // Map binary to ZWC
 const _binToZWC = str => zwc[parseInt(str, 2)]
