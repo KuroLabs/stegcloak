@@ -47,6 +47,9 @@ const concealToData = (str) => {
 
 const embed = (cover, secret) => {
   const arr = cover.split(' ')
+  // console.log(secret.length)
+  secret = secret.replace(new RegExp(zwc[0]+zwc[0],'g'),zwc[4]).replace(new RegExp(zwc[3]+zwc[3],'g'),zwc[5])
+  // console.log(secret.length);
   return [arr[0]].concat([secret + arr[1]]).concat(arr.slice(2, arr.length)).join(' ')
 }
 
@@ -58,7 +61,7 @@ const detach = (str) => {
   const intersection = R.intersection(zwc, zwcBound)
   if (intersection.length === 0) { throw new Error('Invisible stream not detected ! Please copy paste the stegcloak text sent by the sender') };
   const limit = zwcBound.findIndex((x, i) => !(~zwc.indexOf(x)))
-  return payload.slice(0, limit)
+  return payload.slice(0, limit).replace(new RegExp(zwc[4],'g'),zwc[0]+zwc[0]).replace(new RegExp(zwc[5],'g'),zwc[3]+zwc[3])
 }
 
 module.exports = {
