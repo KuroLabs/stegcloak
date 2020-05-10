@@ -13,6 +13,16 @@ const zwc = ['‌', '⁣', '‍', '⁤','⁢','᠎'] // 00-200C, 01-2063, 10-200
 // Map binary to ZWC
 const _binToZWC = str => zwc[parseInt(str, 2)]
 
+const tableMap = [zwc[0]+zwc[1],zwc[0]+zwc[2],zwc[0]+zwc[3],zwc[1]+zwc[2],zwc[1]+zwc[3],zwc[2]+zwc[3]]
+
+const getTableZWC = (zwc1,zwc2) => zwc[tableMap.indexOf(zwc1+zwc2)] //zwc1 A,B => C
+
+const extractTableZWC = zwc1 => tableMap[zwc.indexOf(zwc1)].split('') //zwc1,zwc2 C => A,B
+
+// (ZWC1,ZWC2) ==getTableZWC==> ZWCNEW || secret = ZWCNEW + secret.replace(new RegExp(ZWC1+ZWC1,'g'),zwc[4]).replace(new RegExp(ZWC2+ZWC2,'g'),zwc[5])
+// payload[0]=ZWCNEW ==extractTableZWC==>ZWC1,ZWC2 || payload.slice(1, limit).replace(new RegExp(zwc[4],'g'),ZWC1+ZWC1).replace(new RegExp(zwc[5],'g'),ZWC2+ZWC2)
+
+
 // Map ZWC to binary
 const _ZWCTobin = inp => zeroPad(nTobin(zwc.indexOf(inp)), 2)
 
