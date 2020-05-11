@@ -43,7 +43,7 @@ $ npm install stegcloak
 
 ## How it works
 
-<img src='assets/Flow.PNG'>
+<img src='assets/FlowDiagram.PNG'>
 
 ## CLI Usage
 
