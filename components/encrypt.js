@@ -16,7 +16,7 @@ const _genKey = (password, salt) => pbkdf2Sync(password, salt, 10000, 48, 'sha51
 // Aes stream cipher with random salt and iv -> encrypt an array -- input {password,data,integrity:bool}
 
 const encrypt = config => { // Impure function Side-effects!
-  const salt = randomBytes(16)
+  const salt = randomBytes(8);
   const { iv, key, secret } = _bootEncrypt(config, salt)
   const cipher = createCipheriv('aes-256-ctr', key, iv)
   const payload = concatBuff([cipher.update(secret, 'utf8'), cipher.final()])

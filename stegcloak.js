@@ -35,7 +35,9 @@ class StegCloak {
   reveal (str, password) {
     // Detach invisible characters and convert back to visible characters and also returns analysis of if encryption or integrity check was done
 
-    const { data, integrity, encrypt } = R.pipe(detach, concealToData)(str)
+    const { data, integrity, encrypt } = R.pipe(detach, concealToData)(str);
+
+    console.log(data,integrity,encrypt);
 
     const decryptStream = encrypt ? decrypt({ password, data, integrity }) : data // Decrypt if needed or proxy secret
 
