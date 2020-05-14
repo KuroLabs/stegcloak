@@ -5,25 +5,30 @@
   <br>
   <span>StegCloak</span>
   <br>
-  <br>
+  <img src="https://img.shields.io/npm/l/stegcloak?style=plastic" />
+  <a href="https://www.npmjs.com/package/stegcloak"> <img src="https://img.shields.io/npm/v/stegcloak?style=plastic" /> </a>
+  <img src="https://badgen.net/badge/icon/terminal?icon=terminal&label" />
+  <img src="https://img.shields.io/badge/code_style-standard-brightgreen.svg" />
 </h1>
-
 <h4 align="center">The Cloak of Invisibility for your texts</h4>
 
 <p align="justify">
-StegCloak is a pure JavaScript steganography module designed in functional programming style, to hide text in plain sight - with key features like encryption and top-notch text compression. It can be used in social media or for any other covert communication.
+StegCloak is a pure JavaScript steganography module designed in functional programming style, to hide secrets inside text by compressing and encrypting with Zero Width Characters. It can be used to safely watermark strings, invisble scripts on webpages, texts on social media or for any other covert communication. Completely invisible!
 <p>
 
 <a href="https://standardjs.com" style="position: absolute; top: 610px; right: 20px; padding: 0 0 20px 20px;"><img src="https://cdn.rawgit.com/feross/standard/master/sticker.svg" alt="JavaScript Standard Style" width="80" align="right"></a>
 
 ## Features
+- Cryptographically secure by encrypting the invisible secret using  AES-256-CTR.
+- Uses 6 Inivisible characters in unicode characters that works everywhere in the web.
 
-- Cryptographically secure by encrypting the invisible secret
-- Compression to reduce the payload
-- Completely invisble, uses Zero Width Characters instead of white spaces or tabs
-- Additional HMAC integrity
-- Super fast! Hides the Wikipedia page-source for steganography (800 lines and 205362 characters) within a covertext of 3 words in under one second
-- Written in pure functional style
+  Including the most important ones Tweets, Gmail, Whatsapp, Telegram, Instagram, Facebook etc. 
+
+- Maximum Compression to reduce the payload (LZ, Huffman).
+- Completely invisble, uses Zero Width Characters instead of white spaces or tabs.
+- Additional HMAC integrity.
+- Super fast! Hides the Wikipedia page-source for steganography (800 lines and 205362 characters) within a covertext of 3 words in under one second.
+- Written in pure functional style.
 - Usage - Available as an API module, a CLI and also a <a href='https://stegcloak.surge.sh'>Web Interface</a> (optimized with web workers). Works everywhere!
 
 ## Installing
@@ -41,7 +46,7 @@ $ npm install stegcloak
 
 ## How it works
 
-<img src='assets/Flow.PNG'>
+<img src='assets/FlowDiagram.PNG'>
 
 ## CLI Usage
 
@@ -124,12 +129,11 @@ console.log(secret); // Voldemort is back
 
 ## Resources 
 
-The following papers were referred to for insight and understanding of using Zero Width Characters in steganography. Ideas from these papers were implemented to build StegCloak:
+The following papers were referred to for insight and understanding of using Zero Width Characters in steganography. 
 
-- Aman, Muhammad & Khan, Aihab & Ahmad, Basheer & Kouser, Saeeda. (2017).
+- Milad Taleby Ahvanooey, Qianmu Li , Jun Hou, Ahmed Raza Rajput and Chen Yini
 ```
-A Hybrid Text Steganography Approach Utilizing Unicode Space Characters And Zero-width Character
-International Journal on Information Technologies & Security
+Modern Text Hiding, Text Steganalysis, and Applications: A Comparative Analysis
 ```
 
 - Taleby Ahvanooey, Milad & Li, Qianmu & Hou, Jun & Dana Mazraeh, Hassan & Zhang, Jing.

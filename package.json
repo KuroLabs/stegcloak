@@ -8,7 +8,7 @@
     "ramdajs",
     "stegnography-algorithms"
   ],
-  "version": "0.0.1",
+  "version": "0.0.5",
   "main": "stegcloak.js",
   "engines" : { 
     "node" : ">=8.0.0" 
@@ -17,10 +17,7 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "KuroLabs",
-  "licenses": [{
-    "type": "MIT",
-    "url": "https://github.com/KuroLabs/stegcloak/blob/master/LICENSE" 
-  }],
+  "license": "MIT",
   "bin":{
     "stegcloak":"./cli.js"
   },
