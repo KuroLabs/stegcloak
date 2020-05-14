@@ -48,7 +48,11 @@ const findOptimal = (secret, characters) => {
   }
   const rankedTable = R.sort((a, b) => b[1] - a[1], getOptimal)
 
-  const reqZwc = rankedTable.filter((val) => val[0][1] === '2').slice(0, 2).map(chars => chars[0][0])
+  let reqZwc = rankedTable.filter((val) => val[0][1] === '2').slice(0, 2).map(chars => chars[0][0])
+
+  if (reqZwc.length !== 2) {
+    reqZwc = reqZwc.concat(R.difference(secret, reqZwc).slice(0, 2 - reqZwc.length))
+  }
 
   return reqZwc.slice().sort()
 }
@@ -62,6 +66,7 @@ const zwcHuffMan = (zwc) => {
 
   const shrink = (secret) => {
     const repeatChars = findOptimal(secret, zwc)
+
     return _getCompressFlag(...repeatChars) + secret.replace(new RegExp(repeatChars[0] + repeatChars[0], 'g'), zwc[4]).replace(new RegExp(repeatChars[1] + repeatChars[1], 'g'), zwc[5])
   }
 

@@ -6,11 +6,11 @@ const { encrypt, decrypt } = require('./components/encrypt')
 
 const { compress, decompress, zwcHuffMan } = require('./components/compact')
 
-const zwcOperations = require('./components/message')
+const { zwcOperations, embed } = require('./components/message')
 
-const zwc = ['᠎', '‌', '‍', '⁢', '⁣', '⁤'] // 180e,200c,200d,2062,2063,2064 Where the magic happens !
+const zwc = ['‌', '‍', '⁠', '⁢', '⁣', '⁤'] // 200c,200d,2060,2062,2063,2064 Where the magic happens !
 
-const { embed, detach, toConceal, toConcealHmac, concealToData, noCrypt } = zwcOperations(zwc)
+const { toConceal, toConcealHmac, concealToData, noCrypt, detach } = zwcOperations(zwc)
 
 const { shrink, expand } = zwcHuffMan(zwc)
 
@@ -22,6 +22,10 @@ class StegCloak {
 
     this.integrity = _integrity
   };
+
+  static get zwc () {
+    return zwc
+  }
 
   hide (message, password, cover = 'This is a confidential text') {
     if (cover.split(' ').length === 1) { throw new Error('Minimum two words required') };
@@ -39,10 +43,10 @@ class StegCloak {
     return embed(cover, invisibleStream) // Embed stream  with cover text
   }
 
-  reveal (str, password) {
+  reveal (secret, password) {
     // Detach invisible characters and convert back to visible characters and also returns analysis of if encryption or integrity check was done
 
-    const { data, integrity, encrypt } = R.pipe(detach, expand, concealToData)(str)
+    const { data, integrity, encrypt } = R.pipe(detach, expand, concealToData)(secret)
 
     const decryptStream = encrypt ? decrypt({ password, data, integrity }) : data // Decrypt if needed or proxy secret
 

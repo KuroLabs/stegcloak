@@ -66,15 +66,6 @@ const zwcOperations = (zwc) => {
     }
   }
 
-  // Embed invisble stream to cover text
-
-  const embed = (cover, secret) => {
-    const arr = cover.split(' ')
-    return [arr[0]].concat([secret + arr[1]]).concat(arr.slice(2, arr.length)).join(' ')
-  }
-
-  // Detach invisble stream from cover text
-
   const detach = (str) => {
     const payload = str.split(' ')[1]
     const zwcBound = payload.split('')
@@ -87,7 +78,6 @@ const zwcOperations = (zwc) => {
   }
 
   return {
-    embed,
     detach,
     concealToData,
     toConcealHmac,
@@ -96,4 +86,11 @@ const zwcOperations = (zwc) => {
   }
 }
 
-module.exports = zwcOperations
+// Embed invisble stream to cover text
+
+const embed = (cover, secret) => {
+  const arr = cover.split(' ')
+  return [arr[0]].concat([secret + arr[1]]).concat(arr.slice(2, arr.length)).join(' ')
+}
+
+module.exports = { zwcOperations, embed }
