@@ -16,7 +16,7 @@ const _genKey = (password, salt) => pbkdf2Sync(password, salt, 10000, 48, 'sha51
 // Aes stream cipher with random salt and iv -> encrypt an array -- input {password,data,integrity:bool}
 
 const encrypt = config => { // Impure function Side-effects!
-  const salt = randomBytes(16)
+  const salt = randomBytes(8);
   const { iv, key, secret } = _bootEncrypt(config, salt)
   const cipher = createCipheriv('aes-256-ctr', key, iv)
   const payload = concatBuff([cipher.update(secret, 'utf8'), cipher.final()])
@@ -48,12 +48,12 @@ const _extract = (mode, config, salt) => {
   if (mode === 'encrypt') {
     output.secret = data
   } else if (mode === 'decrypt') {
-    salt = buffSlice(data, 0, 16)
+    salt = buffSlice(data, 0,8)
     if (config.integrity) {
-      output.hmacData = buffSlice(data, 16, 48)
-      output.secret = buffSlice(data, 48)
+      output.hmacData = buffSlice(data, 8, 40)
+      output.secret = buffSlice(data, 40)
     } else {
-      output.secret = buffSlice(data, 16)
+      output.secret = buffSlice(data, 8)
     }
   }
 

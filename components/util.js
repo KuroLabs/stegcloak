@@ -53,7 +53,11 @@ const zeroPad = (num, x) => {
     zero += '0'
   }
   return zero.slice(String(num).length) + num
-}
+};
+
+const zeroTwoPad=R.curry(R.__,2);
+
+
 
 module.exports = {
   toBuffer,
