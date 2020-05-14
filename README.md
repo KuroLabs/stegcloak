@@ -19,13 +19,13 @@ StegCloak is a pure JavaScript steganography module designed in functional progr
 <a href="https://standardjs.com" style="position: absolute; top: 610px; right: 20px; padding: 0 0 20px 20px;"><img src="https://cdn.rawgit.com/feross/standard/master/sticker.svg" alt="JavaScript Standard Style" width="80" align="right"></a>
 
 ## Features
-
-- Cryptographically secure by encrypting the invisible secret
-- Compression to reduce the payload
-- Completely invisble, uses Zero Width Characters instead of white spaces or tabs
-- Additional HMAC integrity
-- Super fast! Hides the Wikipedia page-source for steganography (800 lines and 205362 characters) within a covertext of 3 words in under one second
-- Written in pure functional style
+- Cryptographically secure by encrypting the invisible secret using  AES-256-CTR.
+- Uses 6 Inivisible characters in unicode characters that works everywhere including twitter tweets. 
+- Maximum Compression to reduce the payload (LZ,HUFFMAN).
+- Completely invisble, uses Zero Width Characters instead of white spaces or tabs.
+- Additional HMAC integrity.
+- Super fast! Hides the Wikipedia page-source for steganography (800 lines and 205362 characters) within a covertext of 3 words in under one second.
+- Written in pure functional style.
 - Usage - Available as an API module, a CLI and also a <a href='https://stegcloak.surge.sh'>Web Interface</a> (optimized with web workers). Works everywhere!
 
 ## Installing
@@ -126,12 +126,11 @@ console.log(secret); // Voldemort is back
 
 ## Resources 
 
-The following papers were referred to for insight and understanding of using Zero Width Characters in steganography. Ideas from these papers were implemented to build StegCloak:
+The following papers were referred to for insight and understanding of using Zero Width Characters in steganography. 
 
-- Aman, Muhammad & Khan, Aihab & Ahmad, Basheer & Kouser, Saeeda. (2017).
+- Milad Taleby Ahvanooey, Qianmu Li , Jun Hou, Ahmed Raza Rajput and Chen Yini
 ```
-A Hybrid Text Steganography Approach Utilizing Unicode Space Characters And Zero-width Character
-International Journal on Information Technologies & Security
+Modern Text Hiding, Text Steganalysis, and Applications: A Comparative Analysis
 ```
 
 - Taleby Ahvanooey, Milad & Li, Qianmu & Hou, Jun & Dana Mazraeh, Hassan & Zhang, Jing.

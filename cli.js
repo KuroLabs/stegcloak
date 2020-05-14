@@ -30,6 +30,8 @@ program
 
     const qcover = 'Enter the text you want to hide your secret within? (Minimum 2 words):'
 
+    if(args.nocrypt) questions.pop();
+
     if (args.file) {
       var fileData = fs.readFileSync(args.file, 'utf-8')
       var { fileChoice } = await inquirer.prompt([{ type: 'list', message: `Use data from ${args.file} as secret or cover text?`, name: 'fileChoice', choices: [new inquirer.Separator("== What's your decision ?=="), 'Secret', 'Cover text'] }])
@@ -61,7 +63,7 @@ program
     console.log('\n')
     const questions = [{
       type: 'password',
-      message: 'Enter password :',
+      message: 'Enter password ( Not required if --nocrypt was used ) :',
       name: 'password',
       mask: true
     }, { type: 'string', message: 'Enter data to decrypt :', name: 'payload' }]

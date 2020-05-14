@@ -58,38 +58,6 @@ const zeroPad = (num, x) => {
 const zeroTwoPad=R.curry(R.__,2);
 
 
-// returns filtered optimal zwcs to save more characters by reducing redundancy
-
-// Builds a ranking table and filters the two zwc's that yield good results
-
-const findOptimal = (secret,zwc) => {
-  let dict = zwc.reduce((acc,data) => {acc[data] = {};return acc},{})
-  const size = secret.length
-  for (let j = 0; j < size ; j++) {
-    let count = 1
-    while(j < size && secret[j] == secret[j+1]){
-      count++;
-      j++;
-    }
-    if (count >= 2) {
-      let itr = count
-      while (itr >= 2) {
-        dict[secret[j]][itr] = (dict[secret[j]][itr] || 0) + Math.floor(count/itr)*(itr-1);
-        itr--
-      }
-    }
-  }
-  const getOptimal = []
-  for (let key in dict) {
-    for (let count in dict[key]) {
-      getOptimal.push([key+count,dict[key][count]]);
-    }
-  }
-  const rankedTable = R.sort((a,b)=>b[1]-a[1],getOptimal);
-
-  const reqZwc = rankedTable.filter((val) => val[0][1] == '2').slice(0,2).map(zwc => zwc[0][0]);
-  return reqZwc.slice().sort();
-  }
 
 module.exports = {
   toBuffer,
@@ -101,5 +69,5 @@ module.exports = {
   binToByte,
   concatBuff,
   buffSlice,
-  stepMap,findOptimal
+  stepMap
 }
