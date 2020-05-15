@@ -17,7 +17,9 @@ const { shrink, expand } = zwcHuffMan(zwc)
 const { byteToBin, compliment } = require('./components/util')
 
 class StegCloak {
+  
   constructor (_encrypt = true, _integrity = false) {
+    
     this.encrypt = _encrypt
 
     this.integrity = _integrity
