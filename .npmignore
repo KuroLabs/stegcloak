@@ -1,3 +1,5 @@
 node_modules
 webpack.config.js
 assets
+dist
+README.md

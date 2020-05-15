@@ -1,8 +1,8 @@
 'use strict'
 
-const Buffer = require('safe-buffer').Buffer;
+const Buffer = require('safe-buffer').Buffer
 
-const R = require('ramda');
+const R = require('ramda')
 
 // Compliment an array
 const _not = x => x.map(y => ~y)
