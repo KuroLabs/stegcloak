@@ -27,10 +27,9 @@ StegCloak is a pure JavaScript steganography module designed in functional progr
 
 - Maximum Compression to reduce the payload (LZ, Huffman).
 - Completely invisble, uses Zero Width Characters instead of white spaces or tabs.
-- Additional HMAC integrity.
 - Super fast! Hides the Wikipedia page-source for steganography (800 lines and 205362 characters) within a covertext of 3 words in under one second.
 - Written in pure functional style.
-- Usage - Available as an API module, a CLI and also a <a href='https://stegcloak.surge.sh'>Web Interface</a> (optimized with web workers). Works everywhere!
+- Usage - Available as an API module, a CLI and also a <a href='https://stegcloak.surge.sh'>Web Interface</a> (optimized with web workers). 
 
 <br>
 
