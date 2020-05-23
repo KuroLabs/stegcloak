@@ -51,7 +51,7 @@ const findOptimal = (secret, characters) => {
   let reqZwc = rankedTable.filter((val) => val[0][1] === '2').slice(0, 3).map(chars => chars[0][0])
 
   if (reqZwc.length !== 3) {
-    reqZwc = reqZwc.concat(R.difference(secret, reqZwc).slice(0, 3 - reqZwc.length))
+    reqZwc = reqZwc.concat(R.difference(characters.slice(0,4), reqZwc).slice(0, 3 - reqZwc.length))
   }
 
   return reqZwc.slice().sort()
