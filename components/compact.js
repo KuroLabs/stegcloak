@@ -51,7 +51,7 @@ const findOptimal = (secret, characters) => {
   let reqZwc = rankedTable.filter((val) => val[0][1] === '2').slice(0, 3).map(chars => chars[0][0])
 
   if (reqZwc.length !== 3) {
-    reqZwc = reqZwc.concat(R.difference(characters.slice(0,4), reqZwc).slice(0, 3 - reqZwc.length))
+    reqZwc = reqZwc.concat(R.difference(characters, reqZwc).slice(0, 3 - reqZwc.length))
   }
 
   return reqZwc.slice().sort()
@@ -65,7 +65,7 @@ const zwcHuffMan = (zwc) => {
   const _extractCompressFlag = zwc1 => tableMap[zwc.indexOf(zwc1)].split('') // zwcD => zwA,zwcB,zwcC
 
   const shrink = (secret) => {
-    const repeatChars = findOptimal(secret, zwc)
+    const repeatChars = findOptimal(secret, zwc.slice(0,4))
 
     return _getCompressFlag(...repeatChars) + secret.replace(new RegExp(repeatChars[0] + repeatChars[0], 'g'), zwc[4]).replace(new RegExp(repeatChars[1] + repeatChars[1], 'g'), zwc[5]).replace(new RegExp(repeatChars[2] + repeatChars[2], 'g'), zwc[6])
   }
