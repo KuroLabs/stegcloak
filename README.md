@@ -16,20 +16,25 @@
 StegCloak is a pure JavaScript steganography module designed in functional programming style, to hide secrets inside text by compressing and encrypting with Zero Width Characters. It can be used to safely watermark strings, invisble scripts on webpages, texts on social media or for any other covert communication. Completely invisible!
 <p>
 
-<a href="https://standardjs.com" style="position: absolute; top: 610px; right: 20px; padding: 0 0 20px 20px;"><img src="https://cdn.rawgit.com/feross/standard/master/sticker.svg" alt="JavaScript Standard Style" width="80" align="right"></a>
+<a href="https://standardjs.com" style="position: absolute; top: 100px; right: 20px; padding: 0 0 20px 20px;"><img src="https://cdn.rawgit.com/feross/standard/master/sticker.svg" alt="JavaScript Standard Style" width="80" align="right"></a>
 
 ## Features
-- Cryptographically secure by encrypting the invisible secret using  AES-256-CTR.
+- Protect your invisible secret using passwords and HMAC integrity
+- Cryptographically secure by encrypting the invisible secret using AES-256-CTR.
 - Uses 6 Inivisible characters in unicode characters that works everywhere in the web.
 
   Including the most important ones Tweets, Gmail, Whatsapp, Telegram, Instagram, Facebook etc. 
 
 - Maximum Compression to reduce the payload (LZ, Huffman).
 - Completely invisble, uses Zero Width Characters instead of white spaces or tabs.
-- Additional HMAC integrity.
 - Super fast! Hides the Wikipedia page-source for steganography (800 lines and 205362 characters) within a covertext of 3 words in under one second.
 - Written in pure functional style.
-- Usage - Available as an API module, a CLI and also a <a href='https://stegcloak.surge.sh'>Web Interface</a> (optimized with web workers). Works everywhere!
+- Usage - Available as an API module, a CLI and also a <a href='https://stegcloak.surge.sh'>Web Interface</a> (optimized with web workers). 
+
+<br>
+
+![Airshare Demo](assets/stegcloak.gif)
+
 
 ## Installing
 
