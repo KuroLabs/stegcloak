@@ -14,7 +14,7 @@ const zwcOperations = (zwc) => {
   const _binToZWC = str => zwc[parseInt(str, 2)]
 
   // Map ZWC to binary
-  const _ZWCTobin = inp => zeroPad(nTobin(zwc.indexOf(inp)), 2)
+  const _ZWCTobin = R.compose(zeroPad(2), nTobin, zwc.indexOf)
 
   // Data to ZWC hidden string
 

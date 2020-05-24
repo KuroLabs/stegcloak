@@ -8,7 +8,7 @@ const { compress, decompress, zwcHuffMan } = require('./components/compact')
 
 const { zwcOperations, embed } = require('./components/message')
 
-const zwc = ['‌', '‍', '⁠','⁡','⁢', '⁣', '⁤'] // 200c,200d,2060,2061,2062,2063,2064 Where the magic happens !
+const zwc = ['‌', '‍', '⁠', '⁡', '⁢', '⁣', '⁤'] // 200c,200d,2060,2061,2062,2063,2064 Where the magic happens !
 
 const { toConceal, toConcealHmac, concealToData, noCrypt, detach } = zwcOperations(zwc)
 
@@ -17,9 +17,7 @@ const { shrink, expand } = zwcHuffMan(zwc)
 const { byteToBin, compliment } = require('./components/util')
 
 class StegCloak {
-  
   constructor (_encrypt = true, _integrity = false) {
-    
     this.encrypt = _encrypt
 
     this.integrity = _integrity

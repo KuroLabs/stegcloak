@@ -1,79 +1,85 @@
 {
-  "name": "stegcloak",
-  "keywords":[
-    "cryptography",
-    "steganography",
-    "unicode",
-    "compression",
-    "ramdajs",
-    "stegnography-algorithms"
-  ],
-  "version": "0.0.7",
-  "main": "stegcloak.js",
-  "engines" : { 
-    "node" : ">=8.0.0" 
-  },
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "author": "KuroLabs",
-  "license": "MIT",
-  "bin":{
-    "stegcloak":"./cli.js"
-  },
-  "homepage":"https://github.com/KuroLabs/stegcloak/blob/master/README.md",
-  "description": "StegCloak is a pure JavaScript steganography module designed in functional programming style, to hide text in plain sight - with key features like encryption and top-notch text compression. It can be used in social media or for any other covert communication.",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/KuroLabs/stegcloak"
-  },
-  "contributors":[
-    {
-      "name":"Jyothishmathi CV",
-      "email":"cvjyothishmathi@gmail.com",
-      "url":"https://github.com/JyothishmathiCV"
+    "name": "stegcloak",
+    "keywords": [
+        "cryptography",
+        "steganography",
+        "unicode",
+        "compression",
+        "ramdajs",
+        "stegnography-algorithms"
+    ],
+    "version": "0.0.7",
+    "main": "stegcloak.js",
+    "engines": {
+        "node": ">=8.0.0"
     },
-    {
-      "name":"Kandavel A",
-      "email":"kanduarul@gmail.com",
-      "url":"https://github.com/AK5123"
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
     },
-    {
-      "name":"Mohanasundar M",
-      "email":"itsmohanpierce@gmail.com",
-      "url":"https://github.com/mohanpierce99"
+    "author": "KuroLabs",
+    "license": "MIT",
+    "bin": {
+        "stegcloak": "./cli.js"
+    },
+    "prettier": {
+        "trailingComma": "es5",
+        "tabWidth": 4,
+        "semi": true,
+        "singleQuote": true
+    },
+    "homepage": "https://github.com/KuroLabs/stegcloak/blob/master/README.md",
+    "description": "StegCloak is a pure JavaScript steganography module designed in functional programming style, to hide text in plain sight - with key features like encryption and top-notch text compression. It can be used in social media or for any other covert communication.",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/KuroLabs/stegcloak"
+    },
+    "contributors": [
+        {
+            "name": "Jyothishmathi CV",
+            "email": "cvjyothishmathi@gmail.com",
+            "url": "https://github.com/JyothishmathiCV"
+        },
+        {
+            "name": "Kandavel A",
+            "email": "kanduarul@gmail.com",
+            "url": "https://github.com/AK5123"
+        },
+        {
+            "name": "Mohanasundar M",
+            "email": "itsmohanpierce@gmail.com",
+            "url": "https://github.com/mohanpierce99"
+        }
+    ],
+    "dependencies": {
+        "browserify-cipher": "^1.0.1",
+        "chalk": "^4.0.0",
+        "clipboardy": "^2.3.0",
+        "commander": "^5.1.0",
+        "create-hmac": "^1.1.7",
+        "crypto-browserify": "^3.12.0",
+        "inquirer": "^7.1.0",
+        "lzutf8": "^0.5.5",
+        "ora": "^4.0.4",
+        "pbkdf2": "^3.0.17",
+        "ramda": "^0.27.0",
+        "randombytes": "^2.1.0",
+        "safe-buffer": "^5.2.0",
+        "timing-safe-equal": "^1.0.0"
+    },
+    "devDependencies": {
+        "babel-preset-es2015": "^6.24.1",
+        "babelify": "^10.0.0",
+        "browserify": "^16.5.1",
+        "html-webpack-plugin": "^4.3.0",
+        "minifyify": "^7.3.5",
+        "standard": "^14.3.3",
+        "webpack": "^4.43.0",
+        "webpack-cli": "^3.3.11",
+        "webpack-dev-server": "^3.10.3"
+    },
+    "standard": {
+        "ignore": [
+            "./dist/"
+        ]
     }
-  ],
-  "dependencies": {
-    "browserify-cipher": "^1.0.1",
-    "chalk": "^4.0.0",
-    "clipboardy": "^2.3.0",
-    "commander": "^5.1.0",
-    "create-hmac": "^1.1.7",
-    "crypto-browserify": "^3.12.0",
-    "inquirer": "^7.1.0",
-    "lzutf8": "^0.5.5",
-    "ora": "^4.0.4",
-    "pbkdf2": "^3.0.17",
-    "ramda": "^0.27.0",
-    "randombytes": "^2.1.0",
-    "safe-buffer": "^5.2.0",
-    "timing-safe-equal": "^1.0.0"
-  },
-  "devDependencies": {
-    "babel-preset-es2015": "^6.24.1",
-    "babelify": "^10.0.0",
-    "browserify": "^16.5.1",
-    "html-webpack-plugin": "^4.3.0",
-    "minifyify": "^7.3.5",
-    "standard": "^14.3.3",
-    "webpack": "^4.43.0",
-    "webpack-cli": "^3.3.11",
-    "webpack-dev-server": "^3.10.3"
-  },
-  "standard": {
-    "ignore": [
-      "./dist/"
-    ]
-  }
 }
