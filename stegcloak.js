@@ -1,76 +1,80 @@
-'use strict'
+"use strict";
 
-const R = require('ramda')
+const R = require("ramda");
 
 const {
   encrypt,
   decrypt
-} = require('./components/encrypt')
+} = require("./components/encrypt");
 
 const {
   compress,
   decompress,
   zwcHuffMan
-} = require('./components/compact')
+} = require("./components/compact");
 
 const {
   zwcOperations,
   embed
-} = require('./components/message')
+} = require("./components/message");
 
-const zwc = ['‌', '‍', '⁠', '⁡', '⁢', '⁣', '⁤'] // 200c,200d,2060,2061,2062,2063,2064 Where the magic happens !
+const zwc = ["‌", "‍", "⁠", "⁡", "⁢", "⁣", "⁤"]; // 200c,200d,2060,2061,2062,2063,2064 Where the magic happens !
 
 const {
   toConceal,
   toConcealHmac,
   concealToData,
   noCrypt,
-  detach
-} = zwcOperations(zwc)
+  detach,
+} = zwcOperations(zwc);
 
 const {
   shrink,
   expand
-} = zwcHuffMan(zwc)
+} = zwcHuffMan(zwc);
 
 const {
   byteToBin,
   compliment
-} = require('./components/util')
+} = require("./components/util");
 
 class StegCloak {
-
   constructor(_encrypt = true, _integrity = false) {
+    this.encrypt = _encrypt;
 
-    this.encrypt = _encrypt
-
-    this.integrity = _integrity
-  };
-
-  static get zwc() {
-    return zwc
+    this.integrity = _integrity;
   }
 
-  hide(message, password, cover = 'This is a confidential text') {
-    if (cover.split(' ').length === 1) {
-      throw new Error('Minimum two words required')
-    };
+  static get zwc() {
+    return zwc;
+  }
 
-    const integrity = this.integrity
+  hide(message, password, cover = "This is a confidential text") {
+    if (cover.split(" ").length === 1) {
+      throw new Error("Minimum two words required");
+    }
 
-    const crypt = this.encrypt
+    const integrity = this.integrity;
 
-    const secret = R.pipe(compress, compliment)(message) // Compress and compliment to prepare the secret
+    const crypt = this.encrypt;
 
-    const payload = crypt ? encrypt({
-      password: password,
-      data: secret,
-      integrity
-    }) : secret // Encrypt if needed or proxy secret
+    const secret = R.pipe(compress, compliment)(message); // Compress and compliment to prepare the secret
 
-    const invisibleStream = R.pipe(byteToBin, integrity && crypt ? toConcealHmac : crypt ? toConceal : noCrypt, shrink)(payload) // Create an optimal invisible stream of secret
+    const payload = crypt ?
+      encrypt({
+        password: password,
+        data: secret,
+        integrity,
+      }) :
+      secret; // Encrypt if needed or proxy secret
 
-    return embed(cover, invisibleStream) // Embed stream  with cover text
+    const invisibleStream = R.pipe(
+      byteToBin,
+      integrity && crypt ? toConcealHmac : crypt ? toConceal : noCrypt,
+      shrink
+    )(payload); // Create an optimal invisible stream of secret
+
+    return embed(cover, invisibleStream); // Embed stream  with cover text
   }
 
   reveal(secret, password) {
@@ -80,16 +84,22 @@ class StegCloak {
       data,
       integrity,
       encrypt
-    } = R.pipe(detach, expand, concealToData)(secret)
+    } = R.pipe(
+      detach,
+      expand,
+      concealToData
+    )(secret);
 
-    const decryptStream = encrypt ? decrypt({
-      password,
-      data,
-      integrity
-    }) : data // Decrypt if needed or proxy secret
+    const decryptStream = encrypt ?
+      decrypt({
+        password,
+        data,
+        integrity,
+      }) :
+      data; // Decrypt if needed or proxy secret
 
-    return R.pipe(compliment, decompress)(decryptStream) // Receive the secret
+    return R.pipe(compliment, decompress)(decryptStream); // Receive the secret
   }
 }
 
-module.exports = StegCloak
+module.exports = StegCloak;
