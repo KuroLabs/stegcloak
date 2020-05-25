@@ -21,7 +21,7 @@ StegCloak is a pure JavaScript steganography module designed in functional progr
 ## Features
 - Protect your invisible secret using passwords and HMAC integrity
 - Cryptographically secure by encrypting the invisible secret using AES-256-CTR.
-- Uses 6 Inivisible characters in unicode characters that works everywhere in the web.
+- Uses 7 Inivisible characters in unicode characters that works everywhere in the web.
 
   Including the most important ones Tweets, Gmail, Whatsapp, Telegram, Instagram, Facebook etc. 
 
