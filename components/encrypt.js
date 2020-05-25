@@ -1,13 +1,22 @@
 'use strict'
 
 const aes = require('browserify-cipher')
-const { createCipheriv, createDecipheriv } = aes
+const {
+  createCipheriv,
+  createDecipheriv
+} = aes
 var randomBytes = require('randombytes')
 var pbkdf2Sync = require('pbkdf2').pbkdf2Sync
 var createHmac = require('create-hmac')
-const R = require('ramda')
+const {
+  curry
+} = require('ramda')
 const timeSafeCheck = require('timing-safe-equal')
-const { toBuffer, concatBuff, buffSlice } = require('./util.js')
+const {
+  toBuffer,
+  concatBuff,
+  buffSlice
+} = require('./util.js')
 
 // Key generation from a password
 
@@ -17,7 +26,11 @@ const _genKey = (password, salt) => pbkdf2Sync(password, salt, 10000, 48, 'sha51
 
 const encrypt = config => { // Impure function Side-effects!
   const salt = randomBytes(8)
-  const { iv, key, secret } = _bootEncrypt(config, salt)
+  const {
+    iv,
+    key,
+    secret
+  } = _bootEncrypt(config, salt)
   const cipher = createCipheriv('aes-256-ctr', key, iv)
   const payload = concatBuff([cipher.update(secret, 'utf8'), cipher.final()])
   if (config.integrity) {
@@ -28,7 +41,12 @@ const encrypt = config => { // Impure function Side-effects!
 }
 
 const decrypt = (config) => {
-  const { iv, key, secret, hmacData } = _bootDecrypt(config, null)
+  const {
+    iv,
+    key,
+    secret,
+    hmacData
+  } = _bootDecrypt(config, null)
   const decipher = createDecipheriv('aes-256-ctr', key, iv)
   const decrypted = concatBuff([decipher.update(secret, 'utf8'), decipher.final()])
   if (config.integrity) {
@@ -65,9 +83,9 @@ const _extract = (mode, config, salt) => {
 
 // Encryption/Decryption curried functions
 
-const _bootEncrypt = R.curry(_extract)('encrypt')
+const _bootEncrypt = curry(_extract)('encrypt')
 
-const _bootDecrypt = R.curry(_extract)('decrypt')
+const _bootDecrypt = curry(_extract)('decrypt')
 
 module.exports = {
   encrypt,

@@ -1,6 +1,17 @@
 'use strict'
 
-const R = require('ramda')
+const {
+  pipe,
+  intersection,
+  indexOf,
+  curry,
+  __,
+  slice,
+  split,
+  join,
+  map
+} = require('ramda');
+
 const {
   zeroPad,
   nTobin,
@@ -14,7 +25,8 @@ const zwcOperations = (zwc) => {
   const _binToZWC = str => zwc[parseInt(str, 2)]
 
   // Map ZWC to binary
-  const _ZWCTobin = inp => zeroPad(nTobin(zwc.indexOf(inp)), 2)
+  const _ZWCTobin = pipe(indexOf(__, zwc), nTobin, zeroPad(2));
+
 
   // Data to ZWC hidden string
 
@@ -47,11 +59,11 @@ const zwcOperations = (zwc) => {
 
   // Message curried functions
 
-  const toConcealHmac = R.curry(_dataToZWC)(true)(true)
+  const toConcealHmac = curry(_dataToZWC)(true)(true)
 
-  const toConceal = R.curry(_dataToZWC)(false)(true)
+  const toConceal = curry(_dataToZWC)(false)(true)
 
-  const noCrypt = R.curry(_dataToZWC)(false)(false)
+  const noCrypt = curry(_dataToZWC)(false)(false)
 
   // ZWC string to data
   const concealToData = (str) => {
@@ -62,15 +74,15 @@ const zwcOperations = (zwc) => {
     return {
       encrypt,
       integrity,
-      data: binToByte(str.slice(1).split('').map(x => _ZWCTobin(x)).join(''))
+      data: pipe(slice(1, Infinity), split(''), map(_ZWCTobin), join(''), binToByte)(str)
     }
   }
 
   const detach = (str) => {
     const payload = str.split(' ')[1]
     const zwcBound = payload.split('')
-    const intersection = R.intersection(zwc, zwcBound)
-    if (intersection.length === 0) {
+    const intersected = intersection(zwc, zwcBound)
+    if (intersected.length === 0) {
       throw new Error('Invisible stream not detected ! Please copy paste the stegcloak text sent by the sender')
     };
     const limit = zwcBound.findIndex((x, i) => !(~zwc.indexOf(x)))
@@ -93,4 +105,7 @@ const embed = (cover, secret) => {
   return [arr[0]].concat([secret + arr[1]]).concat(arr.slice(2, arr.length)).join(' ')
 }
 
-module.exports = { zwcOperations, embed }
+module.exports = {
+  zwcOperations,
+  embed
+}
