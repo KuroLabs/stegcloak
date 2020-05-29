@@ -133,7 +133,7 @@ console.log(secret); // Voldemort is back
 
 ```
 #### Important
-Stegcloak does'nt solve the alice-bob-warden problem, its powerful only when people are not looking for it and it helps you to achieve that really well given its invisible properties around the web! It could be safely used for watermarking in forums,tweets,irc chats,social media etc. Please don't use it when you know there's someone who is always actively sniffing your data looking at the unicode characters, in that case even if the secret encoded can never be deciphered the fact lies that the warden ( Middle-man ) now knows some secret communication took place cause there were unusual amount of zero-width / invisible characters involved.
+Stegcloak does'nt solve the alice-bob-warden problem, its powerful only when people are not looking for it and it helps you to achieve that really well given its invisible properties around the web! It could be safely used for watermarking in forums,tweets,irc chats,social media etc. Please don't use it when you know there's someone who is always actively sniffing your data looking at the unicode characters, in that case even if the secret encoded can never be deciphered the fact lies that the warden ( Middle-man ) now knows some secret communication took place cause he would have noticed an unusual amount of special invisible characters.
 ``
 ## Resources 
 
