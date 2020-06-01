@@ -2,9 +2,9 @@
 
 const aes = require("browserify-cipher");
 const { createCipheriv, createDecipheriv } = aes;
-var randomBytes = require("randombytes");
-var pbkdf2Sync = require("pbkdf2").pbkdf2Sync;
-var createHmac = require("create-hmac");
+const randomBytes = require("randombytes");
+const pbkdf2Sync = require("pbkdf2").pbkdf2Sync;
+const createHmac = require("create-hmac");
 const { curry } = require("ramda");
 const timeSafeCheck = require("timing-safe-equal");
 const { toBuffer, concatBuff, buffSlice } = require("./util.js");
