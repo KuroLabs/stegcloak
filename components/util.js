@@ -36,10 +36,9 @@ const nTobin = (x) => x.toString(2);
 
 const compliment = pipe(byarr, map(_not));
 
-// Map in steps along with closure over the passed input
+// Map in steps 
 const stepMap = curry((callback, step, array) => {
   return array
-    .slice()
     .map((d, i, array) => {
       if (i % step === 0) {
         return callback(d, i, array);
