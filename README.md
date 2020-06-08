@@ -34,7 +34,7 @@ StegCloak is a pure JavaScript steganography module designed in functional progr
 
 <br>
 
-![Airshare Demo](assets/stegcloak.gif)
+![StegCloak Demo](assets/stegcloak.gif)
 
 
 ## Installing
@@ -135,7 +135,7 @@ console.log(secret); // Voldemort is back
 ```
 #### Important
 <p align='justify'>
-Stegcloak doesn't solve the alice-bob-warden problem, it's powerful only when people are not looking for it and it helps you to achieve that really well given its invisible properties around the web! It could be safely used for watermarking in forums, invisible tweets,irc chats,social media etc. Please don't use it when you know there's someone who is actively sniffing your data looking at the unicode characters through a data analysis tool, in that case even though the secret encoded cannot be deciphered the fact lies that the warden ( Middle-man ) now knows some secret communication took place, cause he would have noticed an unusual amount of special invisible characters.
+StegCloak doesn't solve the Alice-Bob-Warden problem, it's powerful only when people are not looking for it and it helps you achieve that really well, given its invisible properties around the web! It could be safely used for watermarking in forums, invisible tweets, social media etc. Please don't use it when you know there's someone who is actively sniffing your data - looking at the unicode characters through a data analysis tool. In that case, even though the secret encoded cannot be deciphered, the fact lies that the Warden (middle-man) knows some secret communication took place, because he would have noticed an unusual amount of special invisible characters.
 </p>
 
 ## Resources 
