@@ -66,7 +66,7 @@ Options:
 ```
   hide [options] [secret] [cover]
 
-  -f, --file <file>       Extract input from file
+  -f, --file <file>       Extract text from file
   -n, --nocrypt           If you don't need encryption (default: false)
   -i, --integrity         If additional security of preventing tampering is needed (default: false)
   -o, --output <output>   Stream the results to an output file
@@ -82,10 +82,10 @@ $ stegcloak reveal
 Options:
 
 ```
-  reveal [data]
+  reveal [cover]
 
-  -f, --file <file>       Extract input from file
-  -cp, --clip             Copy Data directly from clipboard
+  -f, --file <file>       Extract cover message from file
+  -cp, --clip             Copy cover directly from clipboard
   -o, --output <output>   Stream the secret to an output file
   -h, --help              display help for command
 ```
