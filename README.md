@@ -66,11 +66,13 @@ Options:
 ```
   hide [options] [secret] [cover]
 
-  -f, --file <file>       Extract text from file
-  -n, --nocrypt           If you don't need encryption (default: false)
-  -i, --integrity         If additional security of preventing tampering is needed (default: false)
-  -o, --output <output>   Stream the results to an output file
-  -h, --help              display help for command
+  -fc, --fcover <file>      Extract cover text from file
+  -fs, --fsecret <file>     Extract secret text from file
+  -n, --nocrypt             If you don't need encryption (default: false)
+  -i, --integrity           If additional security of preventing tampering is needed (default: false)
+  -o, --output <output>     Stream the results to an output file
+  -c, --config <file>       Config file
+  -h, --help                display help for command
 
 ```
 
@@ -82,13 +84,19 @@ $ stegcloak reveal
 Options:
 
 ```
-  reveal [cover]
+  reveal [message]
 
-  -f, --file <file>       Extract cover message from file
-  -cp, --clip             Copy cover directly from clipboard
+  -f, --file <file>       Extract message from file
+  -cp, --clip             Copy message directly from clipboard
   -o, --output <output>   Stream the secret to an output file
+  -c, --config <file>     Config file
   -h, --help              display help for command
 ```
+### Additional support
+
+- **STEGCLOAK_PASSWORD** environment variable if set will be used by default as password
+
+- **Config file** support to configure Stegcloak CLI and to avoid prompts. <a href='https://github.com/KuroLabs/stegcloak/wiki/Stegcloak---configuration-file'> Read Config docs here</a>
 
 ## API Usage
 
