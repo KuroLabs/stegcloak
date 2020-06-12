@@ -1,0 +1,56 @@
+DROP TABLE IF EXISTS Students;
+DROP TABLE IF EXISTS Groupe;
+DROP TABLE IF EXISTS StudentInGroup;
+DROP TABLE IF EXISTS Teachers;
+DROP TABLE IF EXISTS Class;
+DROP TABLE IF EXISTS Courses;
+DROP TABLE IF EXISTS TeacherToCourse;
+DROP TABLE IF EXISTS robot ;
+
+
+CREATE TABLE Students (
+student_id BIGINT (10) PRIMARY KEY AUTO_INCREMENT NOT NULL UNIQUE,
+name VARCHAR (100) NOT NULL,
+birth_day DATETIME NOT NULL);
+
+CREATE TABLE Groupe (
+group_id BIGINT (10) PRIMARY KEY NOT NULL,
+name VARCHAR (100) NOT NULL,
+description VARCHAR,
+class_id BIGINT NOT NULL,
+FOREIGN KEY(class_id) REFERENCES Class(class_id));
+
+CREATE TABLE StudentInGroup (
+id_user BIGINT (10) NOT NULL,
+id_group BIGINT (10) NOT NULL,
+FOREIGN KEY(id_user) REFERENCES Students(student_id),
+FOREIGN KEY(id_group) REFERENCES Groupe(group_id));
+
+CREATE TABLE Teachers (
+teacher_id BIGINT (10) PRIMARY KEY NOT NULL,
+name VARCHAR NOT NULL,
+birth_day DATETIME NOT NULL,
+group_id BIGINT NOT NULL,
+FOREIGN KEY(group_id) REFERENCES Groupe(group_id));
+
+CREATE TABLE Class (
+class_id BIGINT PRIMARY KEY NOT NULL,
+number VARCHAR (5) NOT NULL);
+
+CREATE TABLE Courses (
+course_id BIGINT (10) PRIMARY KEY NOT NULL,
+name VARCHAR (100) NOT NULL,
+description VARCHAR NOT NULL);
+
+CREATE TABLE TeacherToCourse (
+teacher_id BIGINT NOT NULL,
+course_id BIGINT NOT NULL,
+FOREIGN KEY(teacher_id) REFERENCES Teachers(teacher_id),
+FOREIGN KEY(course_id) REFERENCES Courses(course_id));
+
+CREATE TABLE robot  (
+student_id BIGINT (10) DEFAULT 'Oklm ',
+course_id BIGINT NOT NULL,
+FOREIGN KEY(student_id) REFERENCES Groupe(group_id),
+FOREIGN KEY(course_id) REFERENCES Courses(course_id));
+
