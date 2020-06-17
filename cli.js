@@ -73,23 +73,25 @@ function cliReveal(payload, password, op) {
 };
 
 const detach = (str, zwc, invisible = true) => {
-  const payload = str.split(' ')[1]
-  const zwcBound = payload.split('')
-  const intersection = R.intersection(zwc, zwcBound)
-  if (intersection.length === 0) {
-    throw new Error('Invisible stream not detected ! Please copy paste the stegcloak text sent by the sender')
-  };
-  const limit = zwcBound.findIndex((x, i) => !(~zwc.indexOf(x)))
-
-  const zwcStream = payload.slice(0, limit)
-
-  const cleanedMessage = str.split(' ')[0] + (' ' + payload.slice(limit)) + str.split(' ').slice(2).join(' ')
-
-  if (invisible) {
-    return zwcStream
-  } else {
-    return cleanedMessage
-  }
+    const eachWords = str.split(" ")
+    for(let currentIndex = 0; currentIndex < eachWords.length; currentIndex++) {
+      const payload = eachWords[currentIndex]
+      const zwcBound = payload.split("")
+      const intersected = R.intersection(zwc, zwcBound)
+      if (intersected.length !== 0) {
+        const limit = zwcBound.findIndex((x, i) => !(~zwc.indexOf(x)))
+        const zwcStream = payload.slice(0, limit)
+        const cleanedMessage = str.split(' ')[0] + (' ' + payload.slice(limit)) + str.split(' ').slice(2).join(' ')
+        if (invisible) {
+          return zwcStream
+        } else {
+          return cleanedMessage
+        }
+      }
+    }
+    throw new Error(
+      "Invisible stream not detected ! Please copy paste the stegcloak text sent by the sender"
+    );
 }
 
 program
