@@ -8,7 +8,7 @@
     "ramdajs",
     "steganography-algorithms"
   ],
-  "version": "1.0.1",
+  "version": "1.1.0",
   "main": "stegcloak.js",
   "engines": {
     "node": ">=8.0.0"
