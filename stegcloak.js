@@ -18,7 +18,7 @@ const {
   embed
 } = require("./components/message");
 
-const zwc = ["‌", "‍", "⁠", "⁡", "⁢", "⁣", "⁤"]; // 200c,200d,2060,2061,2062,2063,2064 Where the magic happens !
+const zwc = ["‌", "‍", "⁡", "⁢", "⁣", "⁤"]; // 200c,200d,2061,2062,2063,2064 Where the magic happens !
 
 const {
   toConceal,
