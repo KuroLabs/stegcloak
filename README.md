@@ -9,11 +9,13 @@
   <a href="https://www.npmjs.com/package/stegcloak"> <img src="https://img.shields.io/npm/v/stegcloak?style=plastic" /> </a>
   <img src="https://badgen.net/badge/icon/terminal?icon=terminal&label" />
   <img src="https://img.shields.io/badge/code_style-standard-brightgreen.svg" />
+  <br>
+  <a href="https://www.producthunt.com/posts/stegcloak?utm_source=badge-featured&utm_medium=badge&utm_souce=badge-stegcloak" target="_blank"><img src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=206296&theme=dark" alt="Stegcloak - Hide secrets in plain text using passwords - Web exploit |    Product Hunt Embed" style="width: 250px; height: 54px;" width="125px" height="27px" /></a>
 </h1>
 <h4 align="center">The Cloak of Invisibility for your texts</h4>
 
 <p align="justify">
-StegCloak is a pure JavaScript steganography module designed in functional programming style, to hide secrets inside text by compressing and encrypting with Zero Width Characters. It can be used to safely watermark strings, invisble scripts on webpages, texts on social media or for any other covert communication. Completely invisible!
+StegCloak is a pure JavaScript steganography module designed in functional programming style, to hide secrets inside text by compressing and encrypting the secret before cloaking it with special unicode invisible characters. It can be used to safely watermark strings, invisible scripts on webpages, texts on social media or for any other covert communication. Completely invisible!. See how it works in-depth in this medium <a href="https://blog.bitsrc.io/how-to-hide-secrets-in-strings-modern-text-hiding-in-javascript-613a9faa5787">article</a> or watch our <a href="https://www.youtube.com/watch?v=RBDqZwcGvQk">demo</a> to know what it does
 <p>
 
 <a href="https://standardjs.com" style="position: absolute; top: 100px; right: 20px; padding: 0 0 20px 20px;"><img src="https://cdn.rawgit.com/feross/standard/master/sticker.svg" alt="JavaScript Standard Style" width="80" align="right"></a>
@@ -21,19 +23,20 @@ StegCloak is a pure JavaScript steganography module designed in functional progr
 ## Features
 - Protect your invisible secret using passwords and HMAC integrity
 - Cryptographically secure by encrypting the invisible secret using AES-256-CTR.
-- Uses 6 Inivisible characters in unicode characters that works everywhere in the web.
+- Uses 7 Invisible characters in unicode characters that works everywhere in the web.
 
   Including the most important ones Tweets, Gmail, Whatsapp, Telegram, Instagram, Facebook etc. 
 
 - Maximum Compression to reduce the payload (LZ, Huffman).
-- Completely invisble, uses Zero Width Characters instead of white spaces or tabs.
+- Completely invisible, uses Zero Width Characters instead of white spaces or tabs.
 - Super fast! Hides the Wikipedia page-source for steganography (800 lines and 205362 characters) within a covertext of 3 words in under one second.
+- Hiding files in strings can be achieved by uploading the file to cloud and stegcloaking the link in the string
 - Written in pure functional style.
 - Usage - Available as an API module, a CLI and also a <a href='https://stegcloak.surge.sh'>Web Interface</a> (optimized with web workers). 
 
 <br>
 
-![Airshare Demo](assets/stegcloak.gif)
+![StegCloak Demo](assets/stegcloak.gif)
 
 
 ## Installing
@@ -65,11 +68,13 @@ Options:
 ```
   hide [options] [secret] [cover]
 
-  -f, --file <file>       Extract input from file
-  -n, --nocrypt           If you don't need encryption (default: false)
-  -i, --integrity         If additional security of preventing tampering is needed (default: false)
-  -o, --output <output>   Stream the results to an output file
-  -h, --help              display help for command
+  -fc, --fcover <file>      Extract cover text from file
+  -fs, --fsecret <file>     Extract secret text from file
+  -n, --nocrypt             If you don't need encryption (default: false)
+  -i, --integrity           If additional security of preventing tampering is needed (default: false)
+  -o, --output <output>     Stream the results to an output file
+  -c, --config <file>       Config file
+  -h, --help                display help for command
 
 ```
 
@@ -81,13 +86,19 @@ $ stegcloak reveal
 Options:
 
 ```
-  reveal [data]
+  reveal [message]
 
-  -f, --file <file>       Extract input from file
-  -cp, --clip             Copy Data directly from clipboard
+  -f, --file <file>       Extract message from file
+  -cp, --clip             Copy message directly from clipboard
   -o, --output <output>   Stream the secret to an output file
+  -c, --config <file>     Config file
   -h, --help              display help for command
 ```
+### Additional support
+
+- **STEGCLOAK_PASSWORD** environment variable if set will be used by default as password
+
+- **Config file** support to configure Stegcloak CLI and to avoid prompts. <a href='https://github.com/KuroLabs/stegcloak/wiki/Stegcloak---configuration-file'> Read Config docs here</a>
 
 ## API Usage
 
@@ -130,7 +141,12 @@ const secret = stegcloak.reveal(magic, "mischief managed");
 // Automatically detects if encryption or integrity checks were done during hide and acts accordingly
 
 console.log(secret); // Voldemort is back
+
 ```
+#### Important
+<p align='justify'>
+StegCloak doesn't solve the Alice-Bob-Warden problem, it's powerful only when people are not looking for it and it helps you achieve that really well, given its invisible properties around the web! It could be safely used for watermarking in forums, invisible tweets, social media etc. Please don't use it when you know there's someone who is actively sniffing your data - looking at the unicode characters through a data analysis tool. In that case, even though the secret encoded cannot be deciphered, the fact lies that the Warden (middle-man) knows some secret communication took place, because he would have noticed an unusual amount of special invisible characters.
+</p>
 
 ## Resources 
 

@@ -1,47 +1,47 @@
 {
   "name": "stegcloak",
-  "keywords":[
+  "keywords": [
     "cryptography",
     "steganography",
     "unicode",
     "compression",
     "ramdajs",
-    "stegnography-algorithms"
+    "steganography-algorithms"
   ],
-  "version": "0.0.7",
+  "version": "1.0.1",
   "main": "stegcloak.js",
-  "engines" : { 
-    "node" : ">=8.0.0" 
+  "engines": {
+    "node": ">=8.0.0"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "KuroLabs",
   "license": "MIT",
-  "bin":{
-    "stegcloak":"./cli.js"
+  "bin": {
+    "stegcloak": "./cli.js"
   },
-  "homepage":"https://github.com/KuroLabs/stegcloak/blob/master/README.md",
+  "homepage": "https://github.com/KuroLabs/stegcloak/blob/master/README.md",
   "description": "StegCloak is a pure JavaScript steganography module designed in functional programming style, to hide text in plain sight - with key features like encryption and top-notch text compression. It can be used in social media or for any other covert communication.",
   "repository": {
     "type": "git",
     "url": "https://github.com/KuroLabs/stegcloak"
   },
-  "contributors":[
+  "contributors": [
     {
-      "name":"Jyothishmathi CV",
-      "email":"cvjyothishmathi@gmail.com",
-      "url":"https://github.com/JyothishmathiCV"
+      "name": "Jyothishmathi CV",
+      "email": "cvjyothishmathi@gmail.com",
+      "url": "https://github.com/JyothishmathiCV"
     },
     {
-      "name":"Kandavel A",
-      "email":"kanduarul@gmail.com",
-      "url":"https://github.com/AK5123"
+      "name": "Kandavel A",
+      "email": "kanduarul@gmail.com",
+      "url": "https://github.com/AK5123"
     },
     {
-      "name":"Mohanasundar M",
-      "email":"itsmohanpierce@gmail.com",
-      "url":"https://github.com/mohanpierce99"
+      "name": "Mohanasundar M",
+      "email": "itsmohanpierce@gmail.com",
+      "url": "https://github.com/mohanpierce99"
     }
   ],
   "dependencies": {
@@ -52,6 +52,7 @@
     "create-hmac": "^1.1.7",
     "crypto-browserify": "^3.12.0",
     "inquirer": "^7.1.0",
+    "jsonfile": "^6.0.1",
     "lzutf8": "^0.5.5",
     "ora": "^4.0.4",
     "pbkdf2": "^3.0.17",
