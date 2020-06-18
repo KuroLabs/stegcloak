@@ -93,7 +93,7 @@ const zwcOperations = (zwc) => {
       }
     }
     throw new Error(
-      "Invisible stream not detected ! Please copy paste the stegcloak text sent by the sender"
+      "Invisible stream not detected! Please copy and paste the StegCloak text sent by the sender."
     );
   };
 
