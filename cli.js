@@ -15,7 +15,9 @@ const ora = require('ora')
 const fs = require('fs')
 const jsonfile = require('jsonfile');
 const { zwcHuffMan } = require('./components/compact')
+const { zwcOperations } = require("./components/message");
 const { expand } = zwcHuffMan(StegCloak.zwc)
+const { detach } = zwcOperations(StegCloak.zwc);
 
 
 function cliHide(secret, password, cover, crypt, integrity, op) {
@@ -71,28 +73,6 @@ function cliReveal(payload, password, op) {
     process.exit(0)
   }, 300)
 };
-
-const detach = (str, zwc, invisible = true) => {
-    const eachWords = str.split(" ")
-    for(let currentIndex = 0; currentIndex < eachWords.length; currentIndex++) {
-      const payload = eachWords[currentIndex]
-      const zwcBound = payload.split("")
-      const intersected = R.intersection(zwc, zwcBound)
-      if (intersected.length !== 0) {
-        const limit = zwcBound.findIndex((x, i) => !(~zwc.indexOf(x)))
-        const zwcStream = payload.slice(0, limit)
-        const cleanedMessage = str.split(' ')[0] + (' ' + payload.slice(limit)) + str.split(' ').slice(2).join(' ')
-        if (invisible) {
-          return zwcStream
-        } else {
-          return cleanedMessage
-        }
-      }
-    }
-    throw new Error(
-      "Invisible stream not detected! Please copy and paste the StegCloak text sent by the sender."
-    );
-}
 
 program
   .command('hide [secret] [cover]')
@@ -208,7 +188,7 @@ program
 
       data = data || clipboardy.readSync()
 
-      const stream = expand(detach(data, StegCloak.zwc))
+      const stream = expand(detach(data))
 
       if (stream[0] === StegCloak.zwc[2] || process.env["STEGCLOAK_PASSWORD"]) {
         if (process.env["STEGCLOAK_PASSWORD"]) {
@@ -228,7 +208,7 @@ program
 
     else {
       inquirer.prompt([questions[0]]).then(answers => {
-        const stream = expand(detach(answers.payload, StegCloak.zwc))
+        const stream = expand(detach(answers.payload))
 
         if (stream[0] === StegCloak.zwc[2]) {
           cliReveal(answers.payload, null, args.output)
