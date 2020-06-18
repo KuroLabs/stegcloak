@@ -83,18 +83,21 @@ const zwcOperations = (zwc) => {
 
   const detach = (str) => {
     const eachWords = str.split(" ");
-    eachWords.forEach((word)=>{
+    const detached = eachWords.reduce((acc, word) => {
       const zwcBound = word.split("");
       const intersected = intersection(zwc, zwcBound);
       if (intersected.length !== 0) {
         const limit = zwcBound.findIndex((x, i) => !~zwc.indexOf(x));
         return word.slice(0, limit);
       }
-    });
-    
-    throw new Error(
-      "Invisible stream not detected! Please copy and paste the StegCloak text sent by the sender."
-    );
+      return acc;
+    }, '');
+    if (!detached) {
+      throw new Error(
+        "Invisible stream not detected! Please copy and paste the StegCloak text sent by the sender."
+      );
+    }
+    return detached;
   };
 
   return {
