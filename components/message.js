@@ -116,7 +116,7 @@ const embed = (cover, secret) => {
   const targetIndex = Math.floor(Math.random() * Math.floor(arr.length/2));
   return arr.slice(0, targetIndex+1)
     .concat([secret + arr[1]])
-    .concat(arr.slice(targetIndex+1, arr.length))
+    .concat(arr.slice(targetIndex+2, arr.length))
     .join(" ");
 };
 
