@@ -12,7 +12,6 @@
   </a>
   <img src="https://img.shields.io/badge/code_style-standard-brightgreen.svg" />
   <br>
-  <a href="https://www.producthunt.com/posts/stegcloak?utm_source=badge-featured&utm_medium=badge&utm_souce=badge-stegcloak" target="_blank"><img src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=206296&theme=dark" alt="Stegcloak - Hide secrets in plain text using passwords - Web exploit |    Product Hunt Embed" style="width: 250px; height: 54px;" width="125px" height="27px" /></a>
 </h1>
 <h4 align="center">The Cloak of Invisibility for your texts</h4>
 
