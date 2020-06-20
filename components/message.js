@@ -82,16 +82,22 @@ const zwcOperations = (zwc) => {
   };
 
   const detach = (str) => {
-    const payload = str.split(" ")[1];
-    const zwcBound = payload.split("");
-    const intersected = intersection(zwc, zwcBound);
-    if (intersected.length === 0) {
+    const eachWords = str.split(" ");
+    const detached = eachWords.reduce((acc, word) => {
+      const zwcBound = word.split("");
+      const intersected = intersection(zwc, zwcBound);
+      if (intersected.length !== 0) {
+        const limit = zwcBound.findIndex((x, i) => !~zwc.indexOf(x));
+        return word.slice(0, limit);
+      }
+      return acc;
+    }, '');
+    if (!detached) {
       throw new Error(
-        "Invisible stream not detected ! Please copy paste the stegcloak text sent by the sender"
+        "Invisible stream not detected! Please copy and paste the StegCloak text sent by the sender."
       );
     }
-    const limit = zwcBound.findIndex((x, i) => !~zwc.indexOf(x));
-    return payload.slice(0, limit);
+    return detached;
   };
 
   return {
@@ -107,9 +113,10 @@ const zwcOperations = (zwc) => {
 
 const embed = (cover, secret) => {
   const arr = cover.split(" ");
-  return [arr[0]]
+  const targetIndex = Math.floor(Math.random() * Math.floor(arr.length/2));
+  return arr.slice(0, targetIndex+1)
     .concat([secret + arr[1]])
-    .concat(arr.slice(2, arr.length))
+    .concat(arr.slice(targetIndex+1, arr.length))
     .join(" ");
 };
 

@@ -7,7 +7,9 @@
   <br>
   <img src="https://img.shields.io/npm/l/stegcloak?style=plastic" />
   <a href="https://www.npmjs.com/package/stegcloak"> <img src="https://img.shields.io/npm/v/stegcloak?style=plastic" /> </a>
-  <img src="https://badgen.net/badge/icon/terminal?icon=terminal&label" />
+   <a href="https://github.com/sbilly/awesome-security">
+  <img src="https://camo.githubusercontent.com/974d19bae442ae2c1657753f39651ade6bef3411/68747470733a2f2f617765736f6d652e72652f6d656e74696f6e65642d62616467652e737667" />
+  </a>
   <img src="https://img.shields.io/badge/code_style-standard-brightgreen.svg" />
   <br>
   <a href="https://www.producthunt.com/posts/stegcloak?utm_source=badge-featured&utm_medium=badge&utm_souce=badge-stegcloak" target="_blank"><img src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=206296&theme=dark" alt="Stegcloak - Hide secrets in plain text using passwords - Web exploit |    Product Hunt Embed" style="width: 250px; height: 54px;" width="125px" height="27px" /></a>
@@ -23,7 +25,7 @@ StegCloak is a pure JavaScript steganography module designed in functional progr
 ## Features
 - Protect your invisible secret using passwords and HMAC integrity
 - Cryptographically secure by encrypting the invisible secret using AES-256-CTR.
-- Uses 7 Invisible characters in unicode characters that works everywhere in the web.
+- Uses 6 Invisible characters in unicode characters that works everywhere in the web.
 
   Including the most important ones Tweets, Gmail, Whatsapp, Telegram, Instagram, Facebook etc. 
 
