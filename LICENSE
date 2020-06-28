@@ -10,8 +10,10 @@ copies of the Software, and to permit persons to whom the Software is
 furnished to do so, subject to the following conditions:
 
 Stegcloak is opensource for people to contribute and improve it. It doesn't make use of any available algorithms / research. 
-Characters 200c, 200d are widely mentioned in every research paper in this field but with Stegcloak, we the authors discovered 2061, 2062, 2063, 2064 Mathematical invisible characters to achieve full invisibility in editors like vim and in the whole world wide web. 
-Apart from that, there are other unique value adds like usage of two layers of compression and stream based AES-encryption. Thus this research belongs to the original authors of the project and no one else.
+Characters 200c, 200d are widely mentioned in every research paper in this field but with Stegcloak, we the authors discovered 2061, 2062, 2063, 2064
+Mathematical invisible characters to achieve full invisibility in editors like vim and in the whole world wide web. 
+Apart from that, there are other unique value adds like usage of two layers of compression and stream based AES-encryption. 
+Thus this research belongs to the original authors of the project and no one else.
 
 The above copyright notice and this permission notice shall be included in all
 copies or substantial portions of the Software.
