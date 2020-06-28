@@ -144,6 +144,8 @@ const secret = stegcloak.reveal(magic, "mischief managed");
 console.log(secret); // Voldemort is back
 
 ```
+This amazing [blog](https://iwantmore.pizza/posts/zwc-fingerprint.html) by [Francesco Soncina](https://twitter.com/phraaaaaaa) shows how you could use stegcloak API to watermark any text in your website.
+
 #### Important
 <p align='justify'>
 StegCloak doesn't solve the Alice-Bob-Warden problem, it's powerful only when people are not looking for it and it helps you achieve that really well, given its invisible properties around the web! It could be safely used for watermarking in forums, invisible tweets, social media etc. Please don't use it when you know there's someone who is actively sniffing your data - looking at the unicode characters through a data analysis tool. In that case, even though the secret encoded cannot be deciphered, the fact lies that the Warden (middle-man) knows some secret communication took place, because he would have noticed an unusual amount of special invisible characters.
