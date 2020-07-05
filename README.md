@@ -7,8 +7,8 @@
   <br>
   <img src="https://img.shields.io/npm/l/stegcloak?style=plastic" />
   <a href="https://www.npmjs.com/package/stegcloak"> <img src="https://img.shields.io/npm/v/stegcloak?style=plastic" /> </a>
-   <a href="https://github.com/sbilly/awesome-security">
-  <img src="https://camo.githubusercontent.com/974d19bae442ae2c1657753f39651ade6bef3411/68747470733a2f2f617765736f6d652e72652f6d656e74696f6e65642d62616467652e737667" />
+   <a href="https://github.com/sindresorhus/awesome-nodejs">
+  <img src="https://raw.githubusercontent.com/sindresorhus/awesome/main/media/badge.svg" />
   </a>
   <img src="https://img.shields.io/badge/code_style-standard-brightgreen.svg" />
   <br>
