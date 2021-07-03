@@ -147,21 +147,6 @@ This amazing [blog](https://iwantmore.pizza/posts/zwc-fingerprint.html) by [Fran
 StegCloak doesn't solve the Alice-Bob-Warden problem, it's powerful only when people are not looking for it and it helps you achieve that really well, given its invisible properties around the web! It could be safely used for watermarking in forums, invisible tweets, social media etc. Please don't use it when you know there's someone who is actively sniffing your data - looking at the unicode characters through a data analysis tool. In that case, even though the secret encoded cannot be deciphered, the fact lies that the Warden (middle-man) knows some secret communication took place, because he would have noticed an unusual amount of special invisible characters.
 </p>
 
-## Resources 
-
-The following papers were referred to for insight and understanding of using Zero Width Characters in steganography. 
-
-- Milad Taleby Ahvanooey, Qianmu Li , Jun Hou, Ahmed Raza Rajput and Chen Yini
-```
-Modern Text Hiding, Text Steganalysis, and Applications: A Comparative Analysis
-```
-
-- Taleby Ahvanooey, Milad & Li, Qianmu & Hou, Jun & Dana Mazraeh, Hassan & Zhang, Jing.
-```
-AITSteg: An Innovative Text Steganography Technique for Hidden Transmission of Text Message via Social Media.
-IEEE Access
-```
-
 ## Contributing
 
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
